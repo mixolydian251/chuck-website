@@ -1,0 +1,11 @@
+*/node_modules/**/**
+*/.idea*
+*.dockerignore
+*DockerFile
+*docker-compose.yaml
+*postcss.config.js
+*.webpack.config.js
+*src/**/**
+src/**/**
+*yarn.lock
+*chuck_website.iml

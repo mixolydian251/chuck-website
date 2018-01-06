@@ -1,0 +1,25 @@
+.footer{
+  height: 25vh;
+  background-image: linear-gradient(to bottom right, #575d5f, #282b2d);
+
+  &__social{
+    height: 75%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &--image{
+      margin: 4rem;
+      height: 45%;
+    }
+  }
+  &__copyright{
+    height: 25%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    font-size: 1.4rem;
+    padding: 2rem;
+  }
+}
