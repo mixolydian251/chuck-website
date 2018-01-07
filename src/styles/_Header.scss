@@ -31,6 +31,7 @@
 
 @media screen and (max-width: 768px) {
   .header {
+    background-position: top;
     background-size: auto;
     &__title{
       font-size: 7rem;
