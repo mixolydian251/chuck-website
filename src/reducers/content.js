@@ -1,14 +1,14 @@
-export const customerReducerDefaultState = [];
+export const contentReducerDefaultState = [];
 
-// state for this reducer returns a single array, independent from 'filters reducer'
+// state for this reducer returns a single array
 
-export default (state = customerReducerDefaultState, action) => {
+export default (state = contentReducerDefaultState, action) => {
   switch (action.type) {
-    case 'ADD_CUSTOMER':
-      return [...state, action.customer];
-    case 'REMOVE_CUSTOMER':
+    case 'CREATE_CONTENT':
+      return [...state, action.content];
+    case 'REMOVE_CONTENT':
       return state.filter(({ id }) => id !== action.id);
-    case 'EDIT_CUSTOMER':
+    case 'EDIT_CONTENT':
       return state.map(element => {
         if (element.id === action.id) {
           return {

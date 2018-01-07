@@ -164,7 +164,7 @@
   justify-content: flex-start;
   margin-top: 2rem;
   align-items: center;
-  padding: 0 4rem;
+  padding: 0 6rem;
   &__content-container{
     position: relative;
   }
@@ -199,10 +199,6 @@
   }
 }
 
-.space{
-  height: 70vh;
-  background-color: white;
-}
 
 
 
@@ -210,6 +206,12 @@
   html{
     font-size: 50%;
   }
+
+  .quote{
+    justify-content: center;
+    margin-top: 0;
+  }
+
   .about-container{
     &--1{
       flex-direction: column-reverse;

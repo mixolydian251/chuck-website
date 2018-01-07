@@ -4,12 +4,13 @@ import createHistory from 'history/createBrowserHistory';
 
 import HomePage from '../components/HomePage/HomePage';
 import CreateAccountPage from '../components/CreateAccountPage';
-import CollectionsPage from '../components/CollectionsPage';
-import ReviewsPage from '../components/ReviewsPage';
+import PlaysPage from '../components/PlaysPage/PlaysPage';
+import ProsePage from '../components/ProsePage/ProsePage';
 import EventsPage from '../components/EventsPage';
 import NotFoundPage from '../components/NotFoundPage';
-import Menu from '../components/Menu';
-import MobileMenu from "../components/MobileMenu";
+
+import Menu from '../components/Menus/Menu';
+import MobileMenu from "../components/Menus/MobileMenu";
 import Footer from '../components/Footer'
 
 import PrivateRoute from './PrivateRoute';
@@ -57,8 +58,8 @@ class AppRouter extends React.Component{
           {this.state.mobile ? <MobileMenu/> : <Menu/>}
           <Switch>
             <PublicRoute path="/" component={HomePage} exact={true}/>
-            <PublicRoute path="/collections" component={CollectionsPage} />
-            <PublicRoute path="/reviews" component={ReviewsPage} />
+            <PublicRoute path="/plays" component={PlaysPage} />
+            <PublicRoute path="/reviews" component={ProsePage} />
             <PublicRoute path="/events" component={EventsPage} />
             <PublicRoute path="/create-account" component={CreateAccountPage} />
             <PublicRoute component={NotFoundPage} />

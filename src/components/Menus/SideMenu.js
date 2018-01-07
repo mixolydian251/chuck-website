@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const sideArrow = require('../images/side_menu_arrow.svg');
+const sideArrow = require('../../images/side_menu_arrow.svg');
 
 
 class SideMenu extends React.Component{
@@ -56,7 +56,7 @@ class SideMenu extends React.Component{
             <div>Prose</div>
             {this.state.reviews && <div className="mobilemenu__nav--drop-down mobilemenu__nav--prose">
               <div className="mobilemenu__nav--drop-down-item">Short Stories</div>
-              <div className="mobilemenu__nav--drop-down-item">Plays</div>
+              <div className="mobilemenu__nav--drop-down-item">Online Series Piece</div>
             </div> }
           </div>
         </button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const logo = require('../images/chuck_logo_white.svg');
+const logo = require('../../images/chuck_logo_white.svg');
 
 class Menu extends React.Component{
   state = {

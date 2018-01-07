@@ -1,12 +1,12 @@
 import * as firebase from 'firebase';
 
-const config = {
-  apiKey: 'AIzaSyACxFq1f30icL0_1M-52pSPG_FSijCEWAE',
-  authDomain: 'brook-sign-in.firebaseapp.com',
-  databaseURL: 'https://brook-sign-in.firebaseio.com',
-  projectId: 'brook-sign-in',
-  storageBucket: 'brook-sign-in.appspot.com',
-  messagingSenderId: '561944561300'
+var config = {
+  apiKey: "AIzaSyDPai_GwpZVv4jJJsPW2UIkxYg6IpQ7uKg",
+  authDomain: "charles-keith-website.firebaseapp.com",
+  databaseURL: "https://charles-keith-website.firebaseio.com",
+  projectId: "charles-keith-website",
+  storageBucket: "charles-keith-website.appspot.com",
+  messagingSenderId: "975231403228"
 };
 
 firebase.initializeApp(config);
@@ -16,3 +16,6 @@ const emailAuthProvider = new firebase.auth.EmailAuthProvider();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 export { firebase, googleAuthProvider, emailAuthProvider, database as default };
+
+
+
