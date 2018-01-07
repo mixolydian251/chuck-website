@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const sideArrow = require('../images/side_menu_arrow.svg');
+
 
 class SideMenu extends React.Component{
   state = {
@@ -33,41 +35,51 @@ class SideMenu extends React.Component{
   render(){
     return(
       <div className="mobilemenu__nav-container">
-        <div to="/" className="mobilemenu__nav">Home</div>
+
+        <div className="mobilemenu__nav">About</div>
 
         <button onClick={this.handleWorksTouch}>
           <div to="/collections" className="mobilemenu__nav mobilemenu__nav--hitbox">
-            Works
-            {this.state.works && <div className="mobilemenu__nav--drop-down mobilemenu__nav--works">
-              <p>10 Minute Plays</p>
-              <p>One Act Plays</p>
-              <p>Full-Length Plays</p><hr/>
-              <p>Series Pieces</p>
-              <p>Published Works</p>
+              <img className="mobilemenu__nav--arrow" src={sideArrow}/>
+              <div>Plays</div>
+            {this.state.works && <div className="mobilemenu__nav--drop-down mobilemenu__nav--plays">
+              <div className="mobilemenu__nav--drop-down-item">10 Minute Plays</div>
+              <div className="mobilemenu__nav--drop-down-item">One Act Plays</div>
+              <div className="mobilemenu__nav--drop-down-item">Full-Length Plays</div>
             </div> }
           </div>
         </button>
 
         <button onClick={this.handleReviewsTouch}>
           <div to="/reviews" className="mobilemenu__nav mobilemenu__nav--hitbox">
-            Reviews
-            {this.state.reviews && <div className="mobilemenu__nav--drop-down mobilemenu__nav--reviews">
-              <p>Books</p>
-              <p>Plays</p>
-              <p>Articles & Miscellaneous</p>
+            <img className="mobilemenu__nav--arrow" src={sideArrow}/>
+            <div>Prose</div>
+            {this.state.reviews && <div className="mobilemenu__nav--drop-down mobilemenu__nav--prose">
+              <div className="mobilemenu__nav--drop-down-item">Short Stories</div>
+              <div className="mobilemenu__nav--drop-down-item">Plays</div>
             </div> }
           </div>
         </button>
 
+        <div className="mobilemenu__nav">Essays</div>
+
         <button onClick={this.handleEventsTouch}>
           <div to="/events" className="mobilemenu__nav mobilemenu__nav--hitbox">
-            Events
+            <img className="mobilemenu__nav--arrow" src={sideArrow}/>
+            <div>Events</div>
             {this.state.events && <div className="mobilemenu__nav--drop-down mobilemenu__nav--events">
-              <p>Upcoming Events</p>
-              <p>Past Events</p>
+              <div className="mobilemenu__nav--drop-down-item">Upcoming Events</div>
+              <div className="mobilemenu__nav--drop-down-item">Past Events</div>
             </div> }
           </div>
         </button>
+
+        <div className="mobilemenu__nav">Links</div>
+
+        <div className="mobilemenu__log-in-container">
+          <p className="mobilemenu__log-in">Sign In</p>
+          <p className="mobilemenu__log-in">Create Account</p>
+        </div>
 
         <button className="mobilemenu__exit" onClick={this.props.handleSideMenuTouch}> x </button>
 

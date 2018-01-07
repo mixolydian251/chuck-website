@@ -18,22 +18,57 @@ import PublicRoute from './PublicRoute';
 
 const history = createHistory();
 
-const AppRouter = () => (
-  <Router history={history}>
-    <div>
-      {window.innerWidth > 768 ? <Menu/> : <MobileMenu/>}
-      <Switch>
-        <PublicRoute path="/" component={HomePage} exact={true}/>
-        <PublicRoute path="/collections" component={CollectionsPage} />
-        <PublicRoute path="/reviews" component={ReviewsPage} />
-        <PublicRoute path="/events" component={EventsPage} />
-        <PublicRoute path="/create-account" component={CreateAccountPage} />
-        <PublicRoute component={NotFoundPage} />
-      </Switch>
-      <Footer/>
-    </div>
-  </Router>
-);
+
+class AppRouter extends React.Component{
+  state = {
+    mobile: true,
+  };
+
+  componentWillMount(){
+
+
+
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+      //mobile
+
+    } else {
+      if (window.innerWidth > 768) {
+        this.setState({ mobile: false })
+      }
+
+      addEventListener('resize', () => {
+        window.requestAnimationFrame(() => {
+          if (window.innerWidth > 768) {
+            this.setState({ mobile: false })
+          } else{
+            this.setState({ mobile: true })
+          }
+        });
+      })
+    }
+
+
+  }
+
+  render(){
+    return(
+      <Router history={history}>
+        <div>
+          {this.state.mobile ? <MobileMenu/> : <Menu/>}
+          <Switch>
+            <PublicRoute path="/" component={HomePage} exact={true}/>
+            <PublicRoute path="/collections" component={CollectionsPage} />
+            <PublicRoute path="/reviews" component={ReviewsPage} />
+            <PublicRoute path="/events" component={EventsPage} />
+            <PublicRoute path="/create-account" component={CreateAccountPage} />
+            <PublicRoute component={NotFoundPage} />
+          </Switch>
+          <Footer/>
+        </div>
+      </Router>
+    )
+  }
+}
 
 export default AppRouter;
 

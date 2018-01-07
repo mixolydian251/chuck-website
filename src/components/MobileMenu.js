@@ -21,6 +21,8 @@ class MobileMenu extends React.Component{
 
           <img src={logo} id="logo" className="mobilemenu__logo"/>
 
+          <div className="mobilemenu__title">Charles Keith</div>
+
           <button onClick={this.handleSideMenuTouch}><img src={menu} id="menu" className="mobilemenu__button"/></button>
 
           {this.state.sideMenu && <SideMenu handleSideMenuTouch={this.handleSideMenuTouch}/>}
