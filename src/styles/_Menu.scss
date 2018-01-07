@@ -115,6 +115,30 @@
     }
   }
 
+  &__user{
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    right: 2rem;
+
+    &--image{
+      height: 4.5rem;
+      padding: 0.5rem 1.2rem;
+
+      img{
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    &--name{
+      font-size: 1.5rem;
+
+    }
+  }
+
   &__log-in-container{
     z-index: 60;
     display: flex;

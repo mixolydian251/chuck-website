@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import customersReducer from '../reducers/customers';
-import filtersReducer from '../reducers/filters';
+import contentReducer from '../reducers/content';
 import authReducer from '../reducers/authentication';
 import loadingReducer from '../reducers/loading';
 
@@ -11,7 +11,7 @@ export default () => {
   return createStore(
     combineReducers({
       customers: customersReducer,
-      filters: filtersReducer,
+      content: contentReducer,
       auth: authReducer,
       loading: loadingReducer
     }),

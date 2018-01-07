@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import { startLogin } from '../../actions/authentication';
+import { firebase } from '../../firebase/firebase';
 const logo = require('../../images/chuck_logo_white.svg');
 
 class Menu extends React.Component{
@@ -8,6 +10,7 @@ class Menu extends React.Component{
     plays: false,
     prose: false,
     events: false,
+    user: false
   };
   handleWorksHover = () => {
     this.setState((prevState) => ({ plays: !prevState.plays }))
@@ -17,6 +20,9 @@ class Menu extends React.Component{
   };
   handleEventsHover = () => {
     this.setState((prevState) => ({ events: !prevState.events }))
+  };
+  handleUserHover = () => {
+    this.setState((prevState) => ({ user: !prevState.user }))
   };
 
   render(){
@@ -84,10 +90,27 @@ class Menu extends React.Component{
 
           </div>
 
-          <div className="menu__log-in-container">
-            <p className="menu__log-in">Sign In</p>
-            <p className="menu__log-in">Create Account</p>
-          </div>
+
+          {this.props.uid ? (
+            <div className="menu__user">
+              <div className="menu__user--image">
+                <img src={firebase.auth().currentUser.photoURL} />
+              </div>
+              <div className="menu__user--name">
+                <p>{firebase.auth().currentUser.displayName}</p>
+              </div>
+            </div>
+
+            )
+            :
+            (
+            <div className="menu__log-in-container">
+              <button onClick={this.props.startLogin} className="menu__log-in">Sign In</button>
+              <p className="menu__log-in">Create Account</p>
+            </div>
+          )}
+
+
 
         </div>
       </menu>
@@ -95,4 +118,12 @@ class Menu extends React.Component{
   }
 }
 
-export default Menu
+const mapDispatchToProps = dispatch => ({
+  startLogin: () => dispatch(startLogin())
+});
+
+const mapStateToProps = (state, props) => ({
+  uid: state.auth.uid
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

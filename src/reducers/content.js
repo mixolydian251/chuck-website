@@ -18,8 +18,6 @@ export default (state = contentReducerDefaultState, action) => {
         }
         return element;
       });
-    case 'SET_CUSTOMERS':
-      return action.customers;
     default:
       return state;
   }
