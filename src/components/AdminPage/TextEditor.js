@@ -62,7 +62,7 @@ export default class CustomToolbarEditor extends Component {
         <div className="text-area">
           <div className="editor" onClick={this.focus}>
             <Editor
-              editorState={this.state.editorState}
+              editorState={ this.state.editorState }
               onChange={this.onChange}
               plugins={plugins}
               ref={(element) => { this.editor = element; }}
