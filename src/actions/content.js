@@ -1,45 +1,67 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
-
+import moment from 'moment';
 
 export const createContent = content => ({
   type: 'CREATE_CONTENT',
   content
 });
 
-export const startAddContent = (contentData = {}) => {
+export const startCreateContent = (contentData) => {
+
+  console.log(contentData);
+
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
 
-    const {
-      category = '',
-      title = '',
-      text = '',
-      date = new Date(),
-      image = ''
-    } = contentData;
-
-
     const content = {
-      category,
-      title,
-      text,
-      date,
-      image
+      category: '',
+      title: '',
+      description: '',
+      date: Number(moment().format('x')),
+      image: '',
+      ...contentData
     };
 
-    database
-      .ref(`users/${uid}/content`)
-      .push(content)
-      .then(ref => {
-        dispatch(
-          createContent({
-            id: ref.key,
-            ...content
-          })
-        );
-      });
+    if (uid === 'V7kpYQ7RBWVx3HQS6iIUMW6Xjpy2'){
+      database
+        .ref(`content`)
+        .push(content)
+        .then(ref => {
+          dispatch(
+            createContent({
+              id: ref.key,
+              ...content
+            })
+          );
+        });
+    }
   };
 };
 
+export const setContent = content => ({
+  type: 'SET_CONTENT',
+  content
+});
 
+export const startSetContent = () => {
+  console.log('setting Content');
+  return (dispatch, getState) => {
+    const ref = database.ref("content");
+    return ref
+      .orderByChild("category")
+      .equalTo('one-act-play')
+      .once('value')
+      .then(snapshot => {
+        const content = [];
+        snapshot.forEach(childSnapshot => {
+          console.log(childSnapshot.val());
+          content.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        dispatch(setContent(content));
+      });
+  };
+};

@@ -1,15 +1,13 @@
-.mobilemenu-container{
+.mobilemenu-container {
   z-index: 50;
   position: fixed;
   width: 100%;
   background-image: linear-gradient(to bottom right, #575d5f, #282b2d);
   transition: all 200ms;
   opacity: 0.95;
-
-
 }
 
-.mobilemenu{
+.mobilemenu {
   z-index: 60;
   width: 100%;
   display: flex;
@@ -19,43 +17,42 @@
   padding: 1rem 2rem;
   color: #f8f8f8;
 
-  a{
+  a {
     text-decoration: none;
     color: inherit;
   }
 
-  button{
+  button {
     border: none;
     background-color: transparent;
-    &:focus{
+    &:focus {
       outline: none;
     }
 
-    &:active{
+    &:active {
       border-radius: 10px;
       background-color: rgba(173, 173, 173, 0.71);
     }
   }
 
-  &__logo{
+  &__logo {
     z-index: 60;
     transition: all 400ms;
     height: 5rem;
-
   }
 
-  &__title{
+  &__title {
     font-family: Courgette, cursive;
     font-size: 3.5rem;
   }
 
-  &__button{
+  &__button {
     z-index: 60;
     height: 4.8rem;
     filter: invert(100%);
   }
 
-  &__exit{
+  &__exit {
     font-weight: 700;
     font-size: 5rem;
     position: absolute;
@@ -63,7 +60,7 @@
     right: 30px;
   }
 
-  &__nav-container{
+  &__nav-container {
     z-index: 70;
     position: absolute;
     height: 100vh;
@@ -83,13 +80,13 @@
     animation-timing-function: ease-out;
     backface-visibility: hidden;
 
-    button{
+    button {
       color: inherit;
       background-color: transparent;
       border: none;
     }
 
-    hr{
+    hr {
       width: 75%;
       margin: 0.2rem 0;
       padding: 0;
@@ -97,11 +94,11 @@
     }
   }
 
-  &__nav{
+  &__nav {
     z-index: 60 !important;
     padding: 2rem;
     font-size: 2rem;
-    font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     text-transform: uppercase;
 
@@ -109,7 +106,7 @@
     align-items: center;
     justify-content: center;
 
-    &__login{
+    &__login {
       height: 100%;
       width: 100%;
       display: flex;
@@ -117,48 +114,43 @@
       align-items: center;
       justify-content: flex-end;
 
-      &--button{
+      &--button {
         margin: 2rem;
         text-align: center;
         padding: 2rem;
       }
     }
 
-    &--arrow{
+    &--arrow {
       height: 13px;
       margin-left: -35px;
       margin-right: 20px;
-      margin-bottom: 4px ;
+      margin-bottom: 4px;
       filter: invert(95%);
     }
 
-    &--plays{
+    &--plays {
       z-index: 45;
       top: 12.5%;
       left: -100%;
       width: 101%;
       height: 50vh;
-
-
     }
-    &--prose{
+    &--prose {
       z-index: 45;
       top: 25%;
       left: -100%;
       width: 101%;
       height: 30vh;
-
-
     }
-    &--events{
+    &--events {
       z-index: 45;
       top: 50%;
       left: -100%;
       width: 101%;
       height: 30vh;
-
     }
-    &--drop-down{
+    &--drop-down {
       z-index: 45;
       font-weight: 100;
       font-size: 2.2rem;
@@ -171,7 +163,6 @@
       position: absolute;
       padding: 2rem;
       opacity: 1;
-
 
       animation-name: mobileMenuWoosh;
       animation-duration: 250ms;
@@ -192,7 +183,7 @@
     }
   }
 
-  &__log-in-container{
+  &__log-in-container {
     height: 25%;
     width: 100%;
     display: flex;
@@ -201,7 +192,7 @@
     justify-content: flex-end;
   }
 
-  &__log-in{
+  &__log-in {
     text-align: center;
     width: 50%;
     min-width: 136px;
@@ -213,10 +204,10 @@
     padding: 1.2rem 1.2rem;
     margin: 2rem;
 
-    &:hover{
+    &:hover {
       cursor: default;
       transform: translateY(-0.4rem);
-      box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -237,17 +228,13 @@
     opacity: 0;
     transform: translateX(50vw);
   }
-  50%{
+  50% {
     transform: translateX(-2rem);
   }
-  75%{
+  75% {
     opacity: 1;
   }
-  100%{
-
+  100% {
     transform: translateX(0);
   }
 }
-
-
-

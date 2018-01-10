@@ -1,4 +1,4 @@
-.premium{
+.premium {
   color: #303335;
   height: 100vh;
   display: flex;
@@ -7,32 +7,30 @@
   align-items: center;
   background-color: white;
 
-  &__title{
+  &__title {
     padding: 0 2rem;
     text-align: center;
     font-size: 4rem;
     margin-bottom: 1rem;
   }
 
-  &__subtitle{
+  &__subtitle {
     padding: 0 2rem;
     text-align: center;
     font-size: 1.7rem;
   }
 
-  &__membership{
-
-    &--title{
+  &__membership {
+    &--title {
       padding: 2rem;
       text-align: center;
       font-size: 2.5rem;
     }
 
-    &--benefit{
+    &--benefit {
       text-align: center;
       padding: 2rem;
       font-size: 1.6rem;
     }
-
   }
 }

@@ -1,45 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import SideMenu from "./SideMenu";
+import SideMenu from './SideMenu';
 
 const logo = require('../../images/chuck_logo_white.svg');
 const menu = require('../../images/menu.svg');
 
-class MobileMenu extends React.Component{
+class MobileMenu extends React.Component {
   state = {
-    sideMenu: false,
+    sideMenu: false
   };
   handleSideMenuTouch = () => {
-    this.setState((prevState) => ({ sideMenu: !prevState.sideMenu}))
+    this.setState(prevState => ({ sideMenu: !prevState.sideMenu }));
   };
 
-  render(){
-    return(
+  render() {
+    return (
       <menu id="mobilemenu-container" className="mobilemenu-container">
         <div id="mobilemenu" className="mobilemenu">
-
-          <img src={logo} id="logo" className="mobilemenu__logo"/>
+          <img src={logo} id="logo" className="mobilemenu__logo" />
 
           <div className="mobilemenu__title">Charles Keith</div>
 
-          <button onClick={this.handleSideMenuTouch}><img src={menu} id="menu" className="mobilemenu__button"/></button>
+          <button onClick={this.handleSideMenuTouch}>
+            <img src={menu} id="menu" className="mobilemenu__button" />
+          </button>
 
-          {this.state.sideMenu && <SideMenu handleSideMenuTouch={this.handleSideMenuTouch}/>}
-
+          {this.state.sideMenu && (
+            <SideMenu handleSideMenuTouch={this.handleSideMenuTouch} />
+          )}
         </div>
       </menu>
-    )
+    );
   }
 }
 
-export default MobileMenu
-
-
-
-
-
-
+export default MobileMenu;
 
 // <div className="mobilemenu__log-in-container">
 //   <p className="mobilemenu__log-in">Sign In</p>

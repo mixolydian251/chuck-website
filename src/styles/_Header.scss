@@ -1,18 +1,19 @@
-.header{
+.header {
   z-index: 10;
   height: 100vh;
-  background:linear-gradient(
-                  to bottom right,
-                  rgba(0, 0, 0, 0.3),
-                  rgba(0, 0, 0, 0.1)),
-  url("../images/cover_photo.jpg") no-repeat fixed center;
+  background: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.1)
+    ),
+    url('../images/cover_photo.jpg') no-repeat fixed center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  &__title{
+  &__title {
     text-align: center;
     z-index: 11;
     color: white;
@@ -20,11 +21,11 @@
     font-size: 8rem;
   }
 
-  &__subtitle{
+  &__subtitle {
     text-align: center;
     z-index: 11;
     color: white;
-    font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 3rem;
   }
 }
@@ -33,10 +34,8 @@
   .header {
     background-position: top;
     background-size: auto;
-    &__title{
+    &__title {
       font-size: 7rem;
     }
   }
-
-
 }

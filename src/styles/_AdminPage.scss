@@ -1,0 +1,38 @@
+.admin {
+  min-height: 100vh;
+  margin-top: 100px;
+  h1{
+    font-size: 3rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.create-content{
+  width: 70vw;
+  height: 30vh;
+
+  &__form{
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &--title{
+      margin: 2rem;
+      height: 50px;
+      width: 60vw;
+    }
+
+    &--description{
+      margin: 2rem;
+      height: 200px;
+      width: 60%;
+      overflow: scroll;
+    }
+  }
+}

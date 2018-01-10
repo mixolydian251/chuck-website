@@ -11,9 +11,7 @@ export const PrivateRoute = ({
     {...rest}
     component={props =>
       isAuthenticated ? (
-        <div>
           <Component {...props} />
-        </div>
       ) : (
         <Redirect to="/" />
       )

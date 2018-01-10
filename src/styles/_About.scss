@@ -1,24 +1,21 @@
-
-.about-container{
+.about-container {
   display: flex;
-  &--1{
+  &--1 {
     flex-direction: row;
   }
 
-  &--2{
+  &--2 {
     flex-direction: row;
   }
 }
 
-
-
-.about{
+.about {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  &__content{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  &__content {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     width: 50vw;
     font-size: 1.6rem;
     display: flex;
@@ -27,38 +24,21 @@
     align-items: center;
     padding: 4rem;
 
-    &--2{
+    &--2 {
       background-color: #f8f8f8;
     }
   }
 
-  &__image{
+  &__image {
     width: 50vw;
     display: flex;
     align-items: flex-end;
-    img{
+    img {
       width: 100%;
     }
   }
 
-  &__writer{
-    width: 28rem;;
-    font-size: 1.6rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 2rem 0;
-
-    &--image{
-      height: 5rem;
-    }
-
-    &--text{
-      padding-left: 2rem;
-    }
-  }
-
-  &__theatre{
+  &__writer {
     width: 28rem;
     font-size: 1.6rem;
     display: flex;
@@ -66,16 +46,16 @@
     align-items: center;
     padding: 2rem 0;
 
-    &--image{
+    &--image {
       height: 5rem;
     }
 
-    &--text{
+    &--text {
       padding-left: 2rem;
     }
   }
 
-  &__reviewer{
+  &__theatre {
     width: 28rem;
     font-size: 1.6rem;
     display: flex;
@@ -83,59 +63,73 @@
     align-items: center;
     padding: 2rem 0;
 
-    &--image{
+    &--image {
       height: 5rem;
     }
 
-    &--text{
+    &--text {
+      padding-left: 2rem;
+    }
+  }
+
+  &__reviewer {
+    width: 28rem;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem 0;
+
+    &--image {
+      height: 5rem;
+    }
+
+    &--text {
       padding-left: 2rem;
     }
   }
 }
 
-
-
-.review{
+.review {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 0 2rem;
-  &__content-container{
+  &__content-container {
     position: relative;
   }
-  &__image{
+  &__image {
     opacity: 0.1;
     z-index: 10;
     height: 30px;
     position: absolute;
-    &--open-1{
+    &--open-1 {
       top: -10%;
       left: -5%;
     }
-    &--close-1{
+    &--close-1 {
       bottom: -35%;
       right: -5%;
     }
-    &--open-2{
+    &--open-2 {
       top: -5%;
       left: -5%;
     }
-    &--close-2{
+    &--close-2 {
       bottom: -10%;
       right: 0;
     }
-
   }
 
-  &__content{
+  &__content {
     z-index: 20;
     font-size: 1.8rem;
     font-weight: 400;
     position: relative;
   }
 
-  &__subtitle{
+  &__subtitle {
     z-index: 20;
     font-size: 1.4rem;
     opacity: 0.8;
@@ -143,21 +137,7 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.quote{
+.quote {
   height: 350px;
   display: flex;
   flex-direction: column;
@@ -165,33 +145,32 @@
   margin-top: 2rem;
   align-items: center;
   padding: 0 6rem;
-  &__content-container{
+  &__content-container {
     position: relative;
   }
-  &__image{
+  &__image {
     opacity: 0.1;
     z-index: 10;
     height: 7rem;
     position: absolute;
-    &--open{
+    &--open {
       top: -10%;
       left: -10%;
     }
 
-    &--close{
+    &--close {
       bottom: -30%;
       right: -5%;
     }
   }
 
-
-  &__content{
+  &__content {
     z-index: 20;
     font-size: 4rem;
     position: relative;
   }
 
-  &__subtitle{
+  &__subtitle {
     z-index: 20;
     font-size: 1.5rem;
     opacity: 0.8;
@@ -199,25 +178,22 @@
   }
 }
 
-
-
-
 @media screen and (max-width: 768px) {
-  html{
+  html {
     font-size: 50%;
   }
 
-  .quote{
+  .quote {
     justify-content: center;
     margin-top: 0;
   }
 
-  .about-container{
-    &--1{
+  .about-container {
+    &--1 {
       flex-direction: column-reverse;
     }
 
-    &--2{
+    &--2 {
       flex-direction: column;
     }
   }
@@ -252,16 +228,10 @@
     }
   }
 
-
-
-
-
-  .review{
-    &__content-container{
+  .review {
+    &__content-container {
       padding: 4rem 0;
       position: relative;
     }
   }
-
-
 }

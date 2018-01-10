@@ -1,14 +1,14 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box; //borders and padding not included in total box width
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
-body{
+body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   line-height: 1.5;
@@ -16,10 +16,8 @@ body{
   background-color: #f8f8f8;
 }
 
-
-
 @media screen and (max-width: 768px) {
-  html{
+  html {
     font-size: 50%;
   }
 }

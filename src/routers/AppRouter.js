@@ -1,73 +1,46 @@
 import React from 'react';
-import { Router, Switch } from 'react-router-dom';
+import { Route ,Router, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
+import AdminPage from '../components/AdminPage/AdminPage';
 import HomePage from '../components/HomePage/HomePage';
+import ContentDisplay from "../components/ContentDisplay";
 import CreateAccountPage from '../components/CreateAccountPage';
 import PlaysPage from '../components/PlaysPage/PlaysPage';
 import ProsePage from '../components/ProsePage/ProsePage';
 import EventsPage from '../components/EventsPage';
 import NotFoundPage from '../components/NotFoundPage';
 
-import Menu from '../components/Menus/Menu';
-import MobileMenu from "../components/Menus/MobileMenu";
-import Footer from '../components/Footer'
 
+import Menu from '../components/Menus/Menu';
+import Footer from '../components/Footer';
+
+import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
-
 const history = createHistory();
 
-
-class AppRouter extends React.Component{
-  state = {
-    mobile: true,
-  };
-
-  componentWillMount(){
-
-
-
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      //mobile
-
-    } else {
-      if (window.innerWidth > 768) {
-        this.setState({ mobile: false })
-      }
-
-      addEventListener('resize', () => {
-        window.requestAnimationFrame(() => {
-          if (window.innerWidth > 768) {
-            this.setState({ mobile: false })
-          } else{
-            this.setState({ mobile: true })
-          }
-        });
-      })
-    }
-
-
-  }
-
-  render(){
-    return(
+class AppRouter extends React.Component {
+  render() {
+    return (
       <Router history={history}>
         <div>
-          {this.state.mobile ? <MobileMenu/> : <Menu/>}
+          <Menu/>
           <Switch>
-            <PublicRoute path="/" component={HomePage} exact={true}/>
-            <PublicRoute path="/plays" component={PlaysPage} />
-            <PublicRoute path="/reviews" component={ProsePage} />
-            <PublicRoute path="/events" component={EventsPage} />
-            <PublicRoute path="/create-account" component={CreateAccountPage} />
-            <PublicRoute component={NotFoundPage} />
+            <Route path="/" component={HomePage} exact={true} />
+            <AdminRoute path="/admin" component={AdminPage} />
+            <Route path="/plays" component={PlaysPage} />
+            <Route path="/prose" component={ProsePage} />
+            <Route path="/events" component={EventsPage} />
+            <Route path="/content/:id" component={ContentDisplay} />
+            <Route path="/create-account" component={CreateAccountPage} />
+            <Route component={NotFoundPage} />
           </Switch>
-          <Footer/>
+          <Footer />
         </div>
       </Router>
-    )
+    );
   }
 }
 

@@ -1,0 +1,56 @@
+.editor {
+    width: 90vw;
+    box-sizing: border-box;
+    font-size: 1.7rem;
+    font-family: Verdana, sans-serif;
+    cursor: text;
+    padding: 2rem;
+    border-radius: 2px;
+    margin-bottom: 2em;
+    background: #fefefe;
+}
+
+.draftJsToolbar__toolbar__dNtBH {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    bottom: 3px;
+    left: 3px;
+}
+
+.htmlPreview{
+    font-size: 1.4rem;
+    margin-top: 2rem ;
+}
+
+.text-area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.editor :global(.public-DraftEditor-content) {
+    min-height: 140px;
+}
+
+.headlineButtonWrapper {
+    display: inline-block;
+}
+
+.headlineButton {
+    background: #fbfbfb;
+    color: #888;
+    font-size: 18px;
+    border: 0;
+    padding-top: 5px;
+    vertical-align: bottom;
+    height: 34px;
+    width: 36px;
+}
+
+.headlineButton:hover,
+.headlineButton:focus {
+    background: #f3f3f3;
+}

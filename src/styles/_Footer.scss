@@ -1,19 +1,19 @@
-.footer{
+.footer {
   height: 25vh;
   background-image: linear-gradient(to bottom right, #575d5f, #282b2d);
 
-  &__social{
+  &__social {
     height: 75%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 
-    &--image{
+    &--image {
       margin: 4rem;
       height: 45%;
     }
   }
-  &__copyright{
+  &__copyright {
     height: 25%;
     display: flex;
     justify-content: flex-start;

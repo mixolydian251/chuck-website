@@ -1,14 +1,16 @@
-.menu-container{
+.menu-container {
   z-index: 50;
   position: fixed;
+  top: 0;
   width: 100%;
   background-color: #f8f8f8;
   transition: all 200ms;
 }
 
-.menu{
+.menu {
   transition: all 400ms;
   z-index: 60;
+  height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,19 +19,19 @@
   padding: 0 2rem;
   color: #222222;
 
-  a{
+  a {
     text-decoration: none;
     color: inherit;
   }
 
-  &__logo{
+  &__logo {
     z-index: 60;
     transition: all 400ms;
     height: 4rem;
     filter: invert(100%);
   }
 
-  &__nav-container{
+  &__nav-container {
     z-index: 60;
     display: flex;
     align-items: center;
@@ -37,13 +39,19 @@
     text-decoration: none;
     padding-left: 1rem;
 
-    button{
+    button {
       color: inherit;
       background-color: transparent;
       border: none;
+      &:focus{
+        outline: none;
+      }
+      &:active{
+        outline: none;
+      }
     }
 
-    hr{
+    hr {
       width: 75%;
       margin: 0.2rem 0;
       padding: 0;
@@ -51,37 +59,53 @@
     }
   }
 
-  &__nav{
+  &__nav {
     z-index: 60;
     padding: 2rem 1.2rem;
     font-size: 1.6rem;
-    font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    &--hitbox{
+    &--hitbox {
       position: relative;
     }
-    &--plays{
+
+    &--arrow{
+      height: 0.8rem;
+      filter: invert(0);
+      margin-top: 0.5rem;
+      margin-left: 0.8rem;
+    }
+
+    &--plays {
+      position: relative;
       bottom: -240px;
       left: -88%;
       width: 250px;
       height: 240px;
     }
-    &--prose{
-      bottom: -150px;
+    &--prose {
+      position: relative;
+      bottom: -180px;
       left: -68%;
       width: 220px;
-      height: 150px;
-
+      height: 180px;
     }
-    &--events{
-      bottom: -150px;
+    &--events {
+      position: relative;
+      bottom: -180px;
       left: -68%;
       width: 220px;
-      height: 150px;
-
+      height: 180px;
     }
-    &--drop-down{
+    &--user{
+      position: relative;
+      bottom: -160px;
+      left: 0;
+      width: 220px;
+      height: 160px;
+    }
+    &--drop-down {
       z-index: 45;
       font-weight: 200;
       color: #f8f8f8;
@@ -89,57 +113,131 @@
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      background-image: linear-gradient(to bottom right, #6b7173, #282b2d);
+      background-image: linear-gradient(to bottom left, #87736f, #41302f);
       position: absolute;
-      border-radius: 4px;
-      border-top: solid 5px #f8f8f8;
-      padding: 0.3rem 1rem;
-      opacity: 0.95;
+      border-radius: 10px 5px 20px 0;
+      //border-right: solid 5px #ebebeb;
+      border-left: solid 17px #3d2d2d;
+      border-bottom: solid 10px #d7d7d7;
+      padding: 3rem 1rem;
+      opacity: 0.98;
 
       animation-name: menuWoosh;
       animation-duration: 150ms;
-      animation-timing-function: ease-out;
+      animation-timing-function: ease;
       backface-visibility: hidden;
+
+      button{
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 200;
+        background-color: transparent;
+        border: none;
+        &:focus{
+          outline: none;
+        }
+        &:active{
+          outline: none;
+        }
+      }
     }
 
-    &--drop-down-item{
+
+    //&--dropdown-line1{
+    //  z-index: 70;
+    //  position: absolute;
+    //  height: 90%;
+    //  width: 1px;
+    //  background-color: #afafaf;
+    //  bottom: 5%;
+    //  right: -8px;
+    //}
+    &--dropdown-line2{
+      z-index: 70;
+      position: absolute;
+      width: 85%;
+      height: 1px;
+      background-color: #919191;
+      bottom: -7px;
+      right: 10%;
+    }
+    &--dropdown-line3{
+      z-index: 70;
+      position: absolute;
+      width: 85%;
+      height: 1px;
+      background-color: #919191;
+      bottom: -3px;
+      right: 10%;
+    }
+
+    &--dropdown-author{
+      z-index: 70;
+      position: absolute;
+      font-size: 1.1rem;
+      letter-spacing: 0.3rem;
+      color: white;
+      background-color: transparent;
+      transform: rotate(270deg) skewX(20deg);
+      bottom: 25%;
+      &-plays{
+        left: -30px;
+      }
+      &-prose{
+        left: -32px;
+      }
+      &-events{
+        left: -37px;
+      }
+      &-settings{
+        left: -41px;
+      }
+
+    }
+
+    &--drop-down-item {
       width: 110%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 100ms;
-      &:hover{
+      font-size: 1.5rem;
+      color: #f8f8f8;
+      &:hover {
         background-color: rgba(248, 248, 248, 0.15);
       }
     }
   }
 
-  &__user{
+  &__user {
+    width: 220px;
+    color: inherit;
     z-index: 60;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     position: absolute;
     right: 2rem;
+    background: transparent;
+    border: none;
 
-    &--image{
-      height: 4.5rem;
+    &--image {
       padding: 0.5rem 1.2rem;
 
-      img{
-        height: 100%;
+      img {
+        height: 4.5rem;
         border-radius: 50%;
       }
     }
 
-    &--name{
-      font-size: 1.5rem;
+    &--name {
 
+      font-size: 1.5rem;
     }
   }
 
-  &__log-in-container{
+  &__log-in-container {
     z-index: 60;
     display: flex;
     align-items: center;
@@ -148,7 +246,7 @@
     right: 0;
   }
 
-  &__log-in{
+  &__log-in {
     transition: all 100ms;
     z-index: 60;
     background-color: #f8f8f8;
@@ -158,10 +256,10 @@
     padding: 0.5rem 1.2rem;
     margin: 0 1rem;
 
-    &:hover{
+    &:hover {
       cursor: default;
       transform: translateY(-0.4rem);
-      box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -169,10 +267,10 @@
 @keyframes menuWoosh {
   0% {
     opacity: 0;
-    transform: translateY(10rem);
+    transform: scale(0) translateY(20rem);
   }
-  100%{
-    opacity: 0.95;
-    transform: translateY(0);
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }

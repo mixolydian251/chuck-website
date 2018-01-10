@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import AppRouter, { history } from './routers/AppRouter';
 import Loading from './components/Loading';
-import { firebase } from './firebase/firebase'
+import { firebase } from './firebase/firebase';
 import { toggleLoading } from './actions/loading';
 import { login, logout } from './actions/authentication';
-import {startAddContent} from "./actions/content";
+import { startAddContent } from './actions/content';
 
 const store = configureStore();
 
@@ -23,26 +23,19 @@ let hasRendered = false;
 
 const renderApp = () => {
   if (!hasRendered) {
-    setTimeout(() => {
-      ReactDOM.render(jsx, document.getElementById('app'));
-      hasRendered = true;
-    }, 500)
+    ReactDOM.render(jsx, document.getElementById('app'));
+    hasRendered = true;
   }
 };
 
+ReactDOM.render(<Loading />, document.getElementById('app'));
 
-ReactDOM.render(<Loading/>, document.getElementById('app'));
-
-
-firebase.auth().onAuthStateChanged( user => {
+firebase.auth().onAuthStateChanged(user => {
   if (user) {
     store.dispatch(login(user.uid));
-    history.push('/');
     renderApp();
-
   } else {
     store.dispatch(logout());
     renderApp();
   }
 });
-
