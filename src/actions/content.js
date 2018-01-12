@@ -20,6 +20,7 @@ export const startCreateContent = (contentData) => {
       description: '',
       date: Number(moment().format('x')),
       image: '',
+      editorState: '{"entityMap":{},"blocks":[{"key":"dg53k","text":"This is some text from firebase!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]}',
       ...contentData
     };
 
@@ -36,6 +37,40 @@ export const startCreateContent = (contentData) => {
           );
         });
     }
+  };
+};
+
+
+export const editContent = (id, updates) => ({
+  type: 'EDIT_CONTENT',
+  id,
+  updates
+});
+
+export const startEditContent = (id, state) => {
+  return (dispatch, getState) => {
+    dispatch(editContent(id, state));
+    database
+      .ref(`content/${id}`)
+      .update(state)
+      .then(() => {console.log(`edited content: ${state}`)});
+  };
+};
+
+
+export const removeContent = ({ id } = {}) => ({
+  type: 'REMOVE_CONTENT',
+  id
+});
+
+export const startRemoveContent = ({ id } = {}) => {
+  return (dispatch, getState) => {
+    database
+      .ref(`content/${id}`)
+      .remove()
+      .then(() => {
+        dispatch(removeContent({ id }));
+      });
   };
 };
 

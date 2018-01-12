@@ -18,6 +18,21 @@
     left: 3px;
 }
 
+.public-DraftStyleDefault-ul{
+    margin: 0 2rem 0 5rem !important;
+}
+
+.public-DraftStyleDefault-ol{
+    margin: 0 2rem 0 5rem !important;
+}
+
+.public-DraftStyleDefault-orderedListItem{
+    margin: 2rem 0 !important;
+}
+.public-DraftStyleDefault-unorderedListItem{
+    margin: 2rem 0 !important;
+}
+
 .htmlPreview{
     font-size: 1.4rem;
     margin-top: 2rem ;
@@ -54,3 +69,4 @@
 .headlineButton:focus {
     background: #f3f3f3;
 }
+

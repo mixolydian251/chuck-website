@@ -9,7 +9,7 @@ import Loading from './components/Loading';
 import { firebase } from './firebase/firebase';
 import { toggleLoading } from './actions/loading';
 import { login, logout } from './actions/authentication';
-import { startAddContent } from './actions/content';
+import {startAddContent, startRemoveContent} from './actions/content';
 
 const store = configureStore();
 
@@ -39,3 +39,5 @@ firebase.auth().onAuthStateChanged(user => {
     renderApp();
   }
 });
+
+startRemoveContent({id: '-L2Sd56j7O558ZGNUjIt'});

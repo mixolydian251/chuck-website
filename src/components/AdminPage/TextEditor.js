@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { convertToRaw, convertFromRaw, EditorState, RichUtils } from 'draft-js';
 
 import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
 
@@ -18,6 +21,7 @@ import {
 } from 'draft-js-buttons';
 
 import 'draft-js-static-toolbar-plugin/lib/plugin.css';
+import {startEditContent} from "../../actions/content";
 
 const toolbarPlugin = createToolbarPlugin({
   structure: [
@@ -38,10 +42,10 @@ const { Toolbar } = toolbarPlugin;
 const plugins = [toolbarPlugin];
 const text = 'Create a masterpiece..';
 
-export default class CustomToolbarEditor extends Component {
+class CustomToolbarEditor extends Component {
 
   state = {
-    editorState: createEditorStateWithText(text),
+    editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.editorState))),
     html: ''
   };
 
@@ -49,21 +53,39 @@ export default class CustomToolbarEditor extends Component {
     this.setState(() => ({
       editorState,
     }));
+
+    this.saveEditor()
+  };
+
+  saveEditor = () => {
+    let state = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()));
+    this.props.startEditContent(this.props.contentId, { editorState: state });
+
   };
 
   focus = () => {
     this.editor.focus();
   };
 
+  _onTab(event) {
+    event.preventDefault();
+    console.log('onTab');
+    this.onChange(RichUtils.onTab(event, this.state.editorState, 6));
+  }
+
+
+
   render() {
     return (
       <div>
-
         <div className="text-area">
-          <div className="editor" onClick={this.focus}>
+          <div className="editor"
+               onClick={this.focus}
+          >
             <Editor
               editorState={ this.state.editorState }
               onChange={this.onChange}
+              onTab={this._onTab}
               plugins={plugins}
               ref={(element) => { this.editor = element; }}
             />
@@ -72,8 +94,14 @@ export default class CustomToolbarEditor extends Component {
             </div>
           </div>
         </div>
+        <button onClick={this.saveEditor}>Save my content</button>
       </div>
-
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  startEditContent: (id, state) => dispatch(startEditContent(id, { ...state }))
+});
+
+export default connect(undefined, mapDispatchToProps)(CustomToolbarEditor);
