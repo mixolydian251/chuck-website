@@ -1,6 +1,8 @@
 .mobilemenu-container {
   z-index: 50;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background-image: linear-gradient(to bottom right, #575d5f, #282b2d);
   transition: all 200ms;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route ,Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 import AdminPage from '../components/AdminPage/AdminPage';
@@ -12,7 +12,7 @@ import EventsPage from '../components/EventsPage';
 import NotFoundPage from '../components/NotFoundPage';
 
 
-import Menu from '../components/Menus/Menu';
+import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 
 import AdminRoute from './AdminRoute';
@@ -24,7 +24,8 @@ const history = createHistory();
 class AppRouter extends React.Component {
   render() {
     return (
-      <Router history={history}>
+      <BrowserRouter
+        history={history}>
         <div>
           <Menu/>
           <Switch>
@@ -39,7 +40,7 @@ class AppRouter extends React.Component {
           </Switch>
           <Footer />
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }

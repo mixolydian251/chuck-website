@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { startLogin, startLogout } from '../../actions/authentication';
-import { firebase } from '../../firebase/firebase';
-import { history } from "../../routers/AppRouter"
-const logo = require('../../images/chuck_logo_white.svg');
-const dropArrow = require('../../images/drop_down_arrow.svg');
+import { startLogin, startLogout } from '../actions/authentication';
+import { firebase } from '../firebase/firebase';
+import { history } from "../routers/AppRouter"
+const logo = require('../images/chuck_logo_white.svg');
+const dropArrow = require('../images/drop_down_arrow.svg');
 
 class DesktopMenu extends React.Component {
   state = {
@@ -64,21 +64,26 @@ class DesktopMenu extends React.Component {
               onMouseEnter={this.handleWorksHover}
               onMouseLeave={this.handleWorksHover}
             >
-              <Link to="/plays" className="menu__nav menu__nav--hitbox">
+              <div className="menu__nav menu__nav--hitbox">
                 Plays
                 <img id="arrow" className="menu__nav--arrow" src={dropArrow}/>
                 {this.state.plays && (
                   <div className="menu__nav--drop-down menu__nav--plays">
                     <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
-                      10 Minute Plays
+                      <Link to={{ path: 'plays', hash: '#ten-minute-plays'}} className="menu__nav menu__nav--hitbox">
+                        10 Minute Plays
+                      </Link>
                     </button>
                     <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
-                      One Act Plays
+                      <Link to="/plays#one-act-plays" className="menu__nav menu__nav--hitbox">
+                        One Act Plays
+                      </Link>
                     </button>
                     <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
-                      Full-Length Plays
+                      <Link to="/plays#full-length-plays" className="menu__nav menu__nav--hitbox">
+                        Full-Length-Plays
+                      </Link>
                     </button>
-
                     <div className="menu__nav--dropdown-line1"> </div>
                     <div className="menu__nav--dropdown-line2"> </div>
                     <div className="menu__nav--dropdown-line3"> </div>
@@ -86,7 +91,7 @@ class DesktopMenu extends React.Component {
 
                   </div>
                 )}
-              </Link>
+              </div>
             </button>
 
             <button

@@ -1,19 +1,73 @@
-.content{
-  margin-top: 100px;
-  min-height: 100vh;
+@import 'abstracts/variables';
 
+.content-header-container{
+  margin: 7.5rem 0 5rem 0;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content{
+  min-height: 100vh;
+  background: #fafafa;
 
   &__title{
+    width: 85vw;
     font-size: 2.5rem;
+    text-align: start;
+    padding: 2rem;
+
   }
 
   &__date{
+    width: 85vw;
     font-size: 1.5rem;
+    text-align: start;
+    color: #4b4b4b;
+    padding: 2rem;
   }
 
   &__text{
-    font-family: Lora, sans-serif;
+    width: 85vw;
+    font-family: Verdana, sans-serif;
     font-size: 1.7rem;
+    text-align: start;
+    padding: 2rem;
+  }
+
+  &__btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 2rem;
+  }
+
+  &__btn{
+    transition: all 100ms;
+    z-index: 60;
+    color: #f9f9f9;
+    border-radius: 10rem;
+    font-size: 1.7rem;
+    padding: 1.5rem 2rem;
+    margin: 0 1rem;
+
+    &--save{
+      background: linear-gradient( to bottom right, $light_green, $dark_green);
+    }
+    &--remove{
+      background: linear-gradient( to bottom right, #ef473a, #cb2d3e);
+    }
+
+
+    &:hover {
+      cursor: default;
+      transform: translateY(-0.4rem);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+
+
   }
 
 

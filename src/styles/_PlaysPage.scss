@@ -1,18 +1,84 @@
-.plays {
+.plays{
   margin-top: 60px;
   padding: 2rem;
+}
+
+
+.ten-min-plays {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: minmax(300px, auto);
+  grid-auto-rows: minmax(12rem, auto);
   grid-gap: 2rem;
   grid-template-areas: 'title title title';
 
-  font-size: 2.5rem;
+  &__title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    grid-area: title;
+    justify-self: stretch;
+    text-align: center;
+    font-size: 2.7rem;
+    padding: 5rem;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .list-item{
+
+  }
+}
+
+.one-act-plays {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(12rem, auto);
+  grid-gap: 2rem;
+  grid-template-areas: 'title title title';
 
   &__title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     grid-area: title;
+    justify-self: stretch;
     text-align: center;
-    padding: 2rem;
+    font-size: 2.7rem;
+    padding: 5rem;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.full-length-plays {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(12rem, auto);
+  grid-gap: 2rem;
+  grid-template-areas: 'title title title';
+
+  &__title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    grid-area: title;
+    justify-self: stretch;
+    text-align: center;
+    font-size: 2.7rem;
+    padding: 5rem;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
   }
 }

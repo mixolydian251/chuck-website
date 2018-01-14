@@ -9,13 +9,12 @@ export const createContent = content => ({
 
 export const startCreateContent = (contentData) => {
 
-  console.log(contentData);
-
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
 
     const content = {
       category: '',
+      subcategory: '',
       title: '',
       description: '',
       date: Number(moment().format('x')),
@@ -53,7 +52,7 @@ export const startEditContent = (id, state) => {
     database
       .ref(`content/${id}`)
       .update(state)
-      .then(() => {console.log(`edited content: ${state}`)});
+      .then(() => {});
   };
 };
 
@@ -80,22 +79,33 @@ export const setContent = content => ({
 });
 
 export const startSetContent = () => {
-  console.log('setting Content');
   return (dispatch, getState) => {
     const ref = database.ref("content");
     return ref
       .orderByChild("category")
-      .equalTo('one-act-play')
+      .equalTo('play')
       .once('value')
       .then(snapshot => {
         const content = [];
         snapshot.forEach(childSnapshot => {
-          console.log(childSnapshot.val());
           content.push({
             id: childSnapshot.key,
             ...childSnapshot.val()
           });
         });
+        dispatch(setContent(content));
+      });
+  };
+};
+
+export const startSetContentById = (id) => {
+  return (dispatch, getState) => {
+    const ref = database.ref(`content/${id}`);
+    return ref
+      .once('value')
+      .then(snapshot => {
+        console.log(snapshot.val());
+        const content = [{id, ...snapshot.val()}];
         dispatch(setContent(content));
       });
   };

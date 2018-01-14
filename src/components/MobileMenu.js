@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import SideMenu from './SideMenu';
 
-const logo = require('../../images/chuck_logo_white.svg');
-const menu = require('../../images/menu.svg');
+const logo = require('../images/chuck_logo_white.svg');
+const menu = require('../images/menu.svg');
 
 class MobileMenu extends React.Component {
   state = {

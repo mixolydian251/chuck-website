@@ -3,12 +3,12 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: #fafafa;
   transition: all 200ms;
 }
 
 .menu {
-  transition: all 400ms;
+  transition: all 300ms;
   z-index: 60;
   height: 60px;
   width: 100%;
@@ -26,7 +26,7 @@
 
   &__logo {
     z-index: 60;
-    transition: all 400ms;
+    transition: all 300ms;
     height: 4rem;
     filter: invert(100%);
   }

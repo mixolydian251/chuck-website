@@ -1,5 +1,5 @@
 .editor {
-    width: 90vw;
+    width: 85vw;
     box-sizing: border-box;
     font-size: 1.7rem;
     font-family: Verdana, sans-serif;
@@ -7,15 +7,15 @@
     padding: 2rem;
     border-radius: 2px;
     margin-bottom: 2em;
-    background: #fefefe;
+    background: #fafafa;
 }
 
 .draftJsToolbar__toolbar__dNtBH {
     position: fixed;
     display: flex;
     flex-direction: column;
-    bottom: 3px;
-    left: 3px;
+    bottom: 10rem;
+    left: 3rem;
 }
 
 .public-DraftStyleDefault-ul{
@@ -49,6 +49,27 @@
 .editor :global(.public-DraftEditor-content) {
     min-height: 140px;
 }
+
+/*Tool Bar Buttons*/
+
+/*.draftJsToolbar__toolbar__dNtBH{*/
+    /*border: none !important;*/
+    /*background: none !important;*/
+    /*box-shadow: none !important;*/
+/*}*/
+
+/*.draftJsToolbar__button__qi1gf{*/
+    /*background-color: #092e4f !important;*/
+    /*color: #888888 !important;*/
+    /*border-radius: 100px !important;*/
+/*}*/
+
+/*.draftJsToolbar__buttonWrapper__1Dmqh{*/
+    /*background-color: #092e4f !important;*/
+    /*color: #888888 !important;*/
+    /*border-radius: 100px !important;*/
+    /*margin: 2px 0;*/
+/*}*/
 
 .headlineButtonWrapper {
     display: inline-block;

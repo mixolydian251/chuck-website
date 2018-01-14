@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const sideArrow = require('../../images/side_menu_arrow.svg');
+const sideArrow = require('../images/side_menu_arrow.svg');
 
 class SideMenu extends React.Component {
   state = {

@@ -5,14 +5,25 @@ import { connect } from 'react-redux';
 class ContentCreateForm extends React.Component{
   state = {
     category: '',
+    subcategory: '',
     title: '',
     description: '',
     date: '',
   };
 
   handleCategoryChange = e => {
-    const category = e.target.value;
-    this.setState(() => ({ category }));
+    const subcategory = e.target.value;
+    let category = undefined;
+
+    if(subcategory === 'ten-min-play' || 'one-act-play' || 'full-length'){
+      category = 'play'
+    } else if(subcategory === 'short-story' || 'online-series'){
+      category = 'story'
+    } else if(subcategory === 'link'){
+      category = 'link'
+    }
+
+    this.setState(() => ({ category, subcategory }));
   };
 
   handleTitleChange = e => {
@@ -30,6 +41,7 @@ class ContentCreateForm extends React.Component{
 
     let stateObj = {
       category: this.state.category,
+      subcategory: this.state.subcategory,
       title: this.state.title,
       description: this.state.description,
     };
@@ -43,10 +55,9 @@ class ContentCreateForm extends React.Component{
         <form
           className="create-content__form"
         >
-
           <select onChange={this.handleCategoryChange}>
             <option value="">Select a category</option>
-            <option value="10-minute-play">10 Minute Play</option>
+            <option value="ten-min-play">10 Minute Play</option>
             <option value="one-act-play">One Act Play</option>
             <option value="full-length-play">Full Length Play</option>
             <option value="short-story">Short Story</option>

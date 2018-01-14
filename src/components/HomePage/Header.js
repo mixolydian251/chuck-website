@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 
 class Header extends React.Component {
   componentDidMount() {
@@ -9,7 +11,6 @@ class Header extends React.Component {
     const arrowProse = document.getElementsByClassName('menu__nav--arrow')[1];
     const arrowEvents = document.getElementsByClassName('menu__nav--arrow')[2];
 
-
     if (window.innerWidth > 768) {
 
       menu.style.color = `#ffffff`;
@@ -18,6 +19,11 @@ class Header extends React.Component {
       arrowPlays.style.filter = 'invert(100%)';
       arrowProse.style.filter = 'invert(100%)';
       arrowEvents.style.filter = 'invert(100%)';
+
+      // if (this.props.content.authId){
+      //   const arrowUser = document.getElementsByClassName('menu__nav--arrow')[3];
+      //   arrowUser.style.filter = 'invert(100%)';
+      // }
 
       window.addEventListener('scroll', menuColor)
     }
@@ -33,7 +39,7 @@ class Header extends React.Component {
     window.removeEventListener('scroll', menuColor);
 
     menu.style.color = `#222222`;
-    menuBackground.style.backgroundColor = '#f8f8f8';
+    menuBackground.style.backgroundColor = '#fafafa';
     logo.style.filter = 'invert(100%)';
     arrowPlays.style.filter = 'invert(0%)';
     arrowProse.style.filter = 'invert(0%)';
@@ -49,7 +55,17 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  authId: state.authId,
+});
+
+export default connect(mapStateToProps)(Header);
+
+
+
+
+
+
 
 
 function menuColor () {
@@ -68,7 +84,7 @@ function menuColor () {
     });
   }
 
-  if (window.scrollY < window.innerHeight - 200) {
+  if (window.scrollY < window.innerHeight - 210) {
     menu.style.color = `#ffffff`;
     menuBackground.style.backgroundColor = 'transparent';
     logo.style.filter = 'invert(0%)';
@@ -76,17 +92,22 @@ function menuColor () {
     arrowProse.style.filter = 'invert(100%)';
     arrowEvents.style.filter = 'invert(100%)';
 
-
-
+    // if (this.props.content.authId){
+    //   const arrowUser = document.getElementsByClassName('menu__nav--arrow')[3];
+    //   arrowUser.style.filter = 'invert(100%)';
+    // }
 
   } else {
     menu.style.color = `#222222`;
-    menuBackground.style.backgroundColor = '#f8f8f8';
+    menuBackground.style.backgroundColor = '#fafafa';
     logo.style.filter = 'invert(100%)';
     arrowPlays.style.filter = 'invert(0%)';
     arrowProse.style.filter = 'invert(0%)';
     arrowEvents.style.filter = 'invert(0%)';
 
-
+    // if (this.props.content.authId){
+    //   const arrowUser = document.getElementsByClassName('menu__nav--arrow')[3];
+    //   arrowUser.style.filter = 'invert(0%)';
+    // }
   }
 }
