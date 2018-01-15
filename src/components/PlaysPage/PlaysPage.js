@@ -3,19 +3,28 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { history } from "../../routers/AppRouter"
 import { startSetContent } from "../../actions/content"
-import PreviewCard from "./PreviewCard";
+import PreviewCard from "../utilities/PreviewCard";
 
 class PlaysPage extends React.Component{
   state = {
-    plays: this.props.content
+    plays: this.props.content,
+    hash: undefined
   };
 
   componentDidMount(){
-    this.props.startSetContent()
+    this.props.startSetContent('play')
       .then(() => {
         this.setState({ plays: this.props.content });
-        // history.push(`${window.location.href}`)
+        setTimeout(() => {
+          window.location.hash = this.props.location.state.whereTo
+        }, 0)
       });
+  }
+
+  componentDidUpdate(){
+    setTimeout(() => {
+      window.location.hash = this.props.location.state.whereTo
+    }, 0)
   }
 
   render () {
@@ -82,7 +91,7 @@ class PlaysPage extends React.Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  startSetContent: () => dispatch(startSetContent())
+  startSetContent: (category) => dispatch(startSetContent(category))
 });
 
 const mapStateToProps = (state) => ({

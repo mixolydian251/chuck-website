@@ -70,17 +70,20 @@ class DesktopMenu extends React.Component {
                 {this.state.plays && (
                   <div className="menu__nav--drop-down menu__nav--plays">
                     <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
-                      <Link to={{ path: 'plays', hash: '#ten-minute-plays'}} className="menu__nav menu__nav--hitbox">
+                      <Link to={{ pathname: "/plays", state: { whereTo: "ten-minute-plays" }}}
+                        className="menu__nav menu__nav--hitbox">
                         10 Minute Plays
                       </Link>
                     </button>
                     <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
-                      <Link to="/plays#one-act-plays" className="menu__nav menu__nav--hitbox">
+                      <Link to={{ pathname: "/plays", state: { whereTo: "one-act-plays" }}}
+                        className="menu__nav menu__nav--hitbox">
                         One Act Plays
                       </Link>
                     </button>
                     <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
-                      <Link to="/plays#full-length-plays" className="menu__nav menu__nav--hitbox">
+                      <Link to={{ pathname: "/plays", state: { whereTo: "full-length-plays" }}}
+                        className="menu__nav menu__nav--hitbox">
                         Full-Length-Plays
                       </Link>
                     </button>
@@ -99,31 +102,36 @@ class DesktopMenu extends React.Component {
               onMouseEnter={this.handleReviewsHover}
               onMouseLeave={this.handleReviewsHover}
             >
-              <Link to="/prose" className="menu__nav menu__nav--hitbox">
+              <Link to="/prose"
+                    className="menu__nav menu__nav--hitbox">
                 Prose
                 <img id="arrow" className="menu__nav--arrow" src={dropArrow}/>
                 {this.state.prose && (
                   <div className="menu__nav--drop-down menu__nav--prose">
-                    <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
+                    <Link
+                      to={{ pathname: "/prose", state: { whereTo: "short-stories" }}}
+                      onClick={this.handleMenuReset}
+                      className="menu__nav--drop-down-item">
                       Short Stories
-                    </button>
-                    <button onClick={this.handleMenuReset} className="menu__nav--drop-down-item">
+                    </Link>
+                    <Link
+                      to={{ pathname: "/prose", state: { whereTo: "online-series" }}}
+                      onClick={this.handleMenuReset}
+                      className="menu__nav--drop-down-item">
                       Online Story Series
-                    </button>
-
+                    </Link>
                     <div className="menu__nav--dropdown-line1"> </div>
                     <div className="menu__nav--dropdown-line2"> </div>
                     <div className="menu__nav--dropdown-line3"> </div>
                     <div className="menu__nav--dropdown-author menu__nav--dropdown-author-prose">Prose</div>
-
                   </div>
                 )}
               </Link>
             </button>
 
-            <div  className="menu__nav">
+            <Link to="/essays"  className="menu__nav">
               Essays
-            </div>
+            </Link>
 
             <button
               onClick={this.handleMenuReset}
@@ -152,9 +160,10 @@ class DesktopMenu extends React.Component {
               </Link>
             </button>
 
-            <div className="menu__nav">
+            <Link to="/links" className="menu__nav">
               Links
-            </div>
+            </Link>
+
           </div>
 
           {this.props.uid ? (

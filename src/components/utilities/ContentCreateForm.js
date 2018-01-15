@@ -11,19 +11,38 @@ class ContentCreateForm extends React.Component{
     date: '',
   };
 
-  handleCategoryChange = e => {
-    const subcategory = e.target.value;
+  determineCategory = (subcategory) => {
     let category = undefined;
 
-    if(subcategory === 'ten-min-play' || 'one-act-play' || 'full-length'){
-      category = 'play'
-    } else if(subcategory === 'short-story' || 'online-series'){
-      category = 'story'
-    } else if(subcategory === 'link'){
-      category = 'link'
+    if(subcategory === 'ten-min-play' ||
+       subcategory ==='one-act-play' ||
+       subcategory ==='full-length-play') {
+      category = 'play';
     }
 
-    this.setState(() => ({ category, subcategory }));
+    if (subcategory === 'link'){
+      category = 'link';
+    }
+
+    if (subcategory === 'essay'){
+      category = 'essay';
+    }
+
+    if (subcategory === 'short-story' ||
+        subcategory ==='online-series'){
+      category ='prose';
+    }
+
+    return category
+  };
+
+  handleCategoryChange = e => {
+    let subcategory = e.target.value;
+
+    this.setState(() => ({
+      category: this.determineCategory(subcategory),
+      subcategory: subcategory
+    }));
   };
 
   handleTitleChange = e => {
@@ -62,6 +81,7 @@ class ContentCreateForm extends React.Component{
             <option value="full-length-play">Full Length Play</option>
             <option value="short-story">Short Story</option>
             <option value="online-series">Online Story Series</option>
+            <option value="essay">Essay</option>
             <option value="link">Link</option>
           </select>
 

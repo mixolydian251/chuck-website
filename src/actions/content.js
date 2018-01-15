@@ -19,7 +19,7 @@ export const startCreateContent = (contentData) => {
       description: '',
       date: Number(moment().format('x')),
       image: '',
-      editorState: '{"entityMap":{},"blocks":[{"key":"dg53k","text":"This is some text from firebase!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]}',
+      editorState: '{"entityMap":{},"blocks":[{"key":"dg53k","text":"Create a masterpiece!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]}',
       ...contentData
     };
 
@@ -78,12 +78,12 @@ export const setContent = content => ({
   content
 });
 
-export const startSetContent = () => {
+export const startSetContent = (category) => {
   return (dispatch, getState) => {
     const ref = database.ref("content");
     return ref
       .orderByChild("category")
-      .equalTo('play')
+      .equalTo(category)
       .once('value')
       .then(snapshot => {
         const content = [];

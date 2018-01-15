@@ -59,7 +59,10 @@ class CustomToolbarEditor extends Component {
   saveEditor = () => {
     let state = JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent()));
     this.props.startEditContent(this.props.contentId, { editorState: state });
+  };
 
+  saveContent = () => {
+    this.props.editContent()
   };
 
   handleRemoveContent = () => {
@@ -107,7 +110,7 @@ class CustomToolbarEditor extends Component {
           <div className="content__btn-container">
             <button
               className="content__btn content__btn--save"
-              onClick={this.saveEditor}>
+              onClick={this.saveContent}>
               Save my content
             </button>
             <button
