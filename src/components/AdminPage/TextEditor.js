@@ -1,44 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { convertToRaw, convertFromRaw, EditorState, RichUtils } from 'draft-js';
-import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor';
-import database from '../../firebase/firebase';
-
-import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
-import {
-  ItalicButton,
-  BoldButton,
-  UnderlineButton,
-  CodeButton,
-  HeadlineOneButton,
-  HeadlineTwoButton,
-  HeadlineThreeButton,
-  UnorderedListButton,
-  OrderedListButton,
-  BlockquoteButton,
-  CodeBlockButton,
-} from 'draft-js-buttons';
-
-import 'draft-js-static-toolbar-plugin/lib/plugin.css';
 import {startEditContent} from "../../actions/content";
+import { convertToRaw, convertFromRaw, EditorState, RichUtils } from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
+import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
+import createInlineToolbarPlugin, { Separator } from 'draft-js-inline-toolbar-plugin';
+import createLinkPlugin from 'draft-js-anchor-plugin';
+import { ItalicButton, BoldButton, UnderlineButton,
+  CodeButton, HeadlineOneButton, HeadlineTwoButton,
+  HeadlineThreeButton, UnorderedListButton, OrderedListButton,
+  BlockquoteButton, CodeBlockButton, } from 'draft-js-buttons';
+import 'draft-js-inline-toolbar-plugin/lib/plugin.css';
 
-const toolbarPlugin = createToolbarPlugin({
+
+const linkPlugin = createLinkPlugin({
+  placeholder: 'http://…'
+});
+
+const inlineToolbarPlugin = createInlineToolbarPlugin({
   structure: [
     BoldButton,
     ItalicButton,
     UnderlineButton,
-    CodeButton,
     HeadlineOneButton,
     HeadlineTwoButton,
     HeadlineThreeButton,
+    Separator,
     UnorderedListButton,
     OrderedListButton,
-    BlockquoteButton,
-    CodeBlockButton
+    linkPlugin.LinkButton
   ]
 });
-const { Toolbar } = toolbarPlugin;
-const plugins = [toolbarPlugin];
+const { InlineToolbar } = inlineToolbarPlugin;
+
+
+const plugins = [ inlineToolbarPlugin, linkPlugin ];
+
 
 class CustomToolbarEditor extends Component {
 
@@ -100,9 +97,8 @@ class CustomToolbarEditor extends Component {
               />
 
               {!this.state.readOnly &&
-              <div className="toolbar">
-                <Toolbar />
-              </div>}
+                <InlineToolbar/>
+              }
 
             </div>
           </div>
