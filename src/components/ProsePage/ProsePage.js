@@ -28,18 +28,19 @@ class ProsePage extends React.Component{
   render () {
     return(
       <div className="plays">
-        <div className="ten-min-plays">
-          <h1 id="short-stories" className="ten-min-plays__title">Short Stories</h1>
+        <div className="category-container">
+          <h1 id="short-stories" className="category-container__title">Short Stories</h1>
           {this.state.prose.map((prose) => {
             if(prose.subcategory === 'short-story'){
               return(
                 <div className="list_item">
-                  <Link to={`/content/${prose.id}`}>
+                  <Link to={`/${prose.id}`}>
                     <PreviewCard
                       contentId={prose.id}
                       title={prose.title}
                       description={prose.description}
-                      date={prose.date}/>
+                      date={prose.date}
+                      url={prose.url}/>
                   </Link>
                 </div>
               )
@@ -48,17 +49,18 @@ class ProsePage extends React.Component{
         </div>
 
 
-        <div id="online-series" className="one-act-plays">
-          <h1 className="one-act-plays__title">Online Series</h1>
+        <div id="online-series" className="category-container">
+          <h1 className="category-container__title">Online Series</h1>
           {this.state.prose.map((prose) => {
             if(prose.subcategory === 'online-series'){
               return(
-                <Link className="list_items" to={`/content/${prose.id}`}>
+                <Link className="list_items" to={`/${prose.id}`}>
                   <PreviewCard
                     contentId={prose.id}
                     title={prose.title}
                     description={prose.description}
-                    date={prose.date}/>
+                    date={prose.date}
+                    url={prose.url}/>
                 </Link>
               )
             }

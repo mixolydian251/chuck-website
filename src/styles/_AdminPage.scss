@@ -13,9 +13,27 @@
 
 .create-content{
   width: 70vw;
-  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2rem 0;
+
+  &__image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__image{
+    margin: 2rem;
+    max-width: 80%;
+    height: auto;
+  }
 
   &__form{
+    margin: 2rem 0;
     font-size: 1.6rem;
     display: flex;
     flex-direction: column;
@@ -33,6 +51,18 @@
       height: 200px;
       width: 60%;
       overflow: scroll;
+    }
+
+    &--upload-container{
+      margin: 2rem 0;
+      height: 200px;
+      width: 70%;
+    }
+
+    &--upload{
+      height: 90%;
+      width: 100%;
+      background-color: white;
     }
   }
 }

@@ -39,7 +39,7 @@ class AppRouter extends React.Component {
             <Route path="/essays" component={EssaysPage} />
             <Route path="/events" component={EventsPage} />
             <Route path="/links" component={LinksPage} />
-            <Route path="/content/:id" component={ContentDisplay} />
+            <Route path="/:id" component={ContentDisplay} />
             <Route path="/create-account" component={CreateAccountPage} />
             <Route component={NotFoundPage}/>
           </Switch>

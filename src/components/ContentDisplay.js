@@ -8,6 +8,8 @@ import moment from 'moment';
 class ContentDisplay extends React.Component {
   state = {
     id: undefined,
+    category: undefined,
+    subcategory: undefined,
     title: undefined,
     date: undefined,
     description: undefined,
@@ -22,6 +24,8 @@ class ContentDisplay extends React.Component {
         console.log('setting the state');
         this.setState({
           id: this.props.content.id,
+          category: this.props.content.category,
+          subcategory: this.props.content.subcategory,
           title: this.props.content.title,
           date: this.props.content.date,
           description: this.props.content.description,
@@ -30,6 +34,40 @@ class ContentDisplay extends React.Component {
         })
       })
   }
+
+  determineCategory = (subcategory) => {
+    let category = undefined;
+
+    if(subcategory === 'ten-min-play' ||
+      subcategory ==='one-act-play' ||
+      subcategory ==='full-length-play') {
+      category = 'play';
+    }
+
+    if (subcategory === 'link'){
+      category = 'link';
+    }
+
+    if (subcategory === 'essay'){
+      category = 'essay';
+    }
+
+    if (subcategory === 'short-story' ||
+      subcategory ==='online-series'){
+      category ='prose';
+    }
+
+    return category
+  };
+
+  handleCategoryChange = e => {
+    let subcategory = e.target.value;
+
+    this.setState(() => ({
+      category: this.determineCategory(subcategory),
+      subcategory: subcategory
+    }));
+  };
 
   handleTitleChange = e => {
     const title = e.target.value;
@@ -43,6 +81,8 @@ class ContentDisplay extends React.Component {
 
   editContent = () => {
     this.props.startEditContent(this.state.id, {
+      category: this.state.category,
+      subcategory: this.state.subcategory,
       title: this.state.title,
       date: this.state.date,
       description: this.state.description,
@@ -53,22 +93,24 @@ class ContentDisplay extends React.Component {
     this.props.startRemoveContent({ id: this.state.id });
     history.push('/')
   };
+
   render(){
     return(
-      <div className="content">
+      <div>
         {this.state.pageLoaded &&
-        <div>
+        <div className="content">
           <div className="content-header-container">
 
             {this.state.admin ?
               <input
-                className="create-content__form--title"
+                className="display-content__form display-content__form--title"
                 name="title"
                 value={this.state.title}
                 onChange={this.handleTitleChange}/> :
               <div className="content__title">
                 {this.state.title}
               </div>
+
             }
 
             <div className="content__date">
@@ -77,7 +119,7 @@ class ContentDisplay extends React.Component {
 
             {this.state.admin ?
               <textarea
-                className="create-content__form--description"
+                className="display-content__form display-content__form--description"
                 name="description"
                 value={this.state.description}
                 onChange={this.handleDescriptionChange}/> :
@@ -85,6 +127,19 @@ class ContentDisplay extends React.Component {
                 {this.state.description}
               </div>
             }
+
+            {this.state.admin &&
+            <select className="display-content__form--category"
+                    value={this.state.subcategory}
+                    onChange={this.handleCategoryChange}>
+              <option value="ten-min-play">10 Minute Play</option>
+              <option value="one-act-play">One Act Play</option>
+              <option value="full-length-play">Full Length Play</option>
+              <option value="short-story">Short Story</option>
+              <option value="online-series">Online Story Series</option>
+              <option value="essay">Essay</option>
+              <option value="link">Link</option>
+            </select>}
           </div>
 
           <TextEditor

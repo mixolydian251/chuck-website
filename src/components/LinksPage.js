@@ -19,18 +19,19 @@ class LinksPage extends React.Component{
   render () {
     return(
       <div className="plays">
-        <div className="ten-min-plays">
-          <h1 id="ten-minute-plays" className="ten-min-plays__title">Links</h1>
+        <div className="category-container">
+          <h1 id="links" className="category-container__title">Links</h1>
           {this.state.links.map((link) => {
             if(link.subcategory === 'link'){
               return(
                 <div className="list_item">
-                  <Link to={`/content/${link.id}`}>
+                  <Link to={`/${link.id}`}>
                     <PreviewCard
                       contentId={link.id}
                       title={link.title}
                       description={link.description}
-                      date={link.date}/>
+                      date={link.date}
+                      url={link.url}/>
                   </Link>
                 </div>
               )

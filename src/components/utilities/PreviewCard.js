@@ -10,7 +10,9 @@ class PreviewCard extends React.Component{
   render(){
     return(
       <div className="card">
-        <div className="card__title">{this.props.title}</div>
+        <div className="card__title"><strong>{this.props.title}</strong></div>
+        <img src={this.props.url}
+             className="card__img"/>
         <div className="card__description">{this.props.description}</div>
         <div className="card__date">{moment(this.props.date).format('MMM Do, YYYY')}</div>
       </div>

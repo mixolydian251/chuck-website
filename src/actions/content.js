@@ -1,5 +1,5 @@
 import uuid from 'uuid';
-import database from '../firebase/firebase';
+import database, { storage } from '../firebase/firebase';
 import moment from 'moment';
 
 export const createContent = content => ({
@@ -19,6 +19,7 @@ export const startCreateContent = (contentData) => {
       description: '',
       date: Number(moment().format('x')),
       image: '',
+      url: '',
       editorState: '{"entityMap":{},"blocks":[{"key":"dg53k","text":"Create a masterpiece!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]}',
       ...contentData
     };
@@ -110,3 +111,17 @@ export const startSetContentById = (id) => {
       });
   };
 };
+
+export const startUploadImage = (file, subcategoty) => {
+  return (dispatch, getState) => {
+    const ref = storage.ref(`${subcategoty}/${String(file)}`);
+    return ref
+      .put(file)
+      .then(snapshot => {
+        console.log('Uploaded' , snapshot.totalBytes, 'bytes');
+      });
+  };
+};
+
+
+

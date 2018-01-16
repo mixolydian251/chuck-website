@@ -31,18 +31,19 @@ class PlaysPage extends React.Component{
     return(
       <div className="plays">
 
-        <div className="ten-min-plays">
-          <h1 id="ten-minute-plays" className="ten-min-plays__title">10 Minute Plays</h1>
+        <div className="category-container">
+          <h1 id="ten-minute-plays" className="category-container__title">10 Minute Plays</h1>
           {this.state.plays.map((play) => {
             if(play.subcategory === 'ten-min-play'){
               return(
                 <div className="list_item">
-                  <Link to={`/content/${play.id}`}>
+                  <Link to={`/${play.id}`}>
                     <PreviewCard
                       contentId={play.id}
                       title={play.title}
                       description={play.description}
-                      date={play.date}/>
+                      date={play.date}
+                      url={play.url}/>
                   </Link>
                 </div>
               )
@@ -51,17 +52,18 @@ class PlaysPage extends React.Component{
         </div>
 
 
-        <div id="one-act-plays" className="one-act-plays">
-          <h1 className="one-act-plays__title">One Act Plays</h1>
+        <div id="one-act-plays" className="category-container">
+          <h1 className="category-container__title">One Act Plays</h1>
           {this.state.plays.map((play) => {
             if(play.subcategory === 'one-act-play'){
               return(
-                <Link className="list_items" to={`/content/${play.id}`}>
+                <Link className="list_items" to={`/${play.id}`}>
                   <PreviewCard
                     contentId={play.id}
                     title={play.title}
                     description={play.description}
-                    date={play.date}/>
+                    date={play.date}
+                    url={play.url}/>
                 </Link>
               )
             }
@@ -69,17 +71,18 @@ class PlaysPage extends React.Component{
         </div>
 
 
-        <div id="full-length-plays" className="full-length-plays">
-          <h1 className="full-length-plays__title">Full-Length Plays</h1>
+        <div id="full-length-plays" className="category-container">
+          <h1 className="category-container__title">Full-Length Plays</h1>
           {this.state.plays.map((play) => {
             if(play.subcategory === 'full-length-play'){
               return(
-                <Link contentId={play.id} className="list_items" to={`/content/${play.id}`}>
+                <Link contentId={play.id} className="list_items" to={`${play.id}`}>
                   <PreviewCard
                     contentId={play.id}
                     title={play.title}
                     description={play.description}
-                    date={play.date}/>
+                    date={play.date}
+                    url={play.url}/>
                 </Link>
               )
             }

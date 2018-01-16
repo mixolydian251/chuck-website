@@ -4,10 +4,11 @@
     font-size: 1.7rem;
     font-family: Verdana, sans-serif;
     cursor: text;
-    padding: 2rem;
+    padding: 2rem 5rem 8rem;
     border-radius: 2px;
     margin-bottom: 2em;
     background: #ffffff;
+    box-shadow: 0 1rem 2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .editor :global(.public-DraftEditor-content) {
@@ -24,6 +25,10 @@
 
 
  /*Styles I messed with below*/
+
+figure{
+    margin: 1rem 0;
+}
 
 .draftJsToolbar__toolbar__dNtBH {
     width: fit-content;

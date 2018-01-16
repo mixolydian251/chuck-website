@@ -19,13 +19,13 @@ class EssaysPage extends React.Component{
   render () {
     return(
       <div className="plays">
-        <div className="ten-min-plays">
-          <h1 id="ten-minute-plays" className="ten-min-plays__title">Essays</h1>
+        <div className="category-container">
+          <h1 id="ten-minute-plays" className="category-container__title">Essays</h1>
           {this.state.essays.map((essay) => {
             if(essay.subcategory === 'essay'){
               return(
                 <div className="list_item">
-                  <Link to={`/content/${essay.id}`}>
+                  <Link to={`/${essay.id}`}>
                     <PreviewCard
                       contentId={essay.id}
                       title={essay.title}

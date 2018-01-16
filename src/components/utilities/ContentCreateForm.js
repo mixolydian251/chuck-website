@@ -1,6 +1,8 @@
 import React from 'react';
 import { startCreateContent } from '../../actions/content';
 import { connect } from 'react-redux';
+import { storage } from '../../firebase/firebase';
+import uuid from 'uuid';
 
 class ContentCreateForm extends React.Component{
   state = {
@@ -8,7 +10,9 @@ class ContentCreateForm extends React.Component{
     subcategory: '',
     title: '',
     description: '',
-    date: '',
+    url: '',
+    imagePath: '',
+    uploadedImage: false
   };
 
   determineCategory = (subcategory) => {
@@ -50,6 +54,38 @@ class ContentCreateForm extends React.Component{
     this.setState(() => ({ title }));
   };
 
+  handlePhotoChange = e => {
+    const photo = e.target.name;
+    let file = e.target.files[0];
+
+    if(this.state.subcategory){
+      const path = `${this.state.subcategory ? 
+        this.state.subcategory : 
+        this.state.category }/${String(photo)}`;
+      const ref = storage.ref(path);
+      ref.put(file)
+        .then( snapshot => {
+          this.setState(() => ({
+            url: snapshot.downloadURL,
+            uploadedImage: true,
+            imagePath: path
+          }));
+        });
+    }
+  };
+
+  handleRemovePhoto = () => {
+    const ref = storage.ref().child(this.state.imagePath);
+    ref.delete()
+      .then( () => {
+        this.setState(() => ({
+          url: '',
+          uploadedImage: false,
+          imagePath: ''
+        }));
+      });
+  };
+
   handleDescriptionChange = e => {
     const description = e.target.value;
     this.setState(() => ({ description }));
@@ -63,17 +99,20 @@ class ContentCreateForm extends React.Component{
       subcategory: this.state.subcategory,
       title: this.state.title,
       description: this.state.description,
+      url: this.state.url,
     };
 
-    this.props.startCreateContent( stateObj );
+    if(this.state.category &&
+       this.state.subcategory &&
+       this.state.title ) {
+      this.props.startCreateContent(stateObj);
+    }
   };
 
   render() {
     return(
       <div className="create-content">
-        <form
-          className="create-content__form"
-        >
+        <div className="create-content__form">
           <select onChange={this.handleCategoryChange}>
             <option value="">Select a category</option>
             <option value="ten-min-play">10 Minute Play</option>
@@ -100,17 +139,34 @@ class ContentCreateForm extends React.Component{
               onChange={this.handleDescriptionChange}/>
           </fieldset>
 
+          {this.state.uploadedImage &&
+          <div className="create-content__image-container">
+            <img src={this.state.url} className="create-content__image"/><br/>
+            <button
+              className="content__btn content__btn--remove"
+              onClick={this.handleRemovePhoto}>
+              Remove image
+            </button>
+          </div>
+          }
 
-          <fieldset>
+          <fieldset
+            className="create-content__form--upload-container">
             <legend>Upload a photo</legend>
-            <input type="file" name="photo" id="photo"/>
-            <input type="submit" value="Upload"/>
+            <input type="file"
+                   id="photo"
+                   accept="image/*"
+                   onChange={this.handlePhotoChange}
+                   className="create-content__form--upload" />
           </fieldset>
 
 
-          <input onClick={this.handleSubmit} type="submit" value="Create"/>
+          <input className="content__btn content__btn--save"
+                  onClick={this.handleSubmit}
+                  type="submit"
+                  value="Create"/>
+        </div>
 
-        </form>
 
       </div>
     )
