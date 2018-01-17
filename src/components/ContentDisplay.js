@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TextEditor from './AdminPage/TextEditor';
+import TextEditor from './utilities/TextEditor';
 import {startEditContent, startRemoveContent, startSetContentById} from "../actions/content";
-
+import Loading from './Loading';
 import moment from 'moment';
 
 class ContentDisplay extends React.Component {
@@ -19,6 +19,7 @@ class ContentDisplay extends React.Component {
   };
 
   componentDidMount(){
+    window.scrollTo(0,0);
     this.props.startSetContentById(this.props.match.params.id)
       .then(() => {
         console.log('setting the state');
@@ -97,7 +98,7 @@ class ContentDisplay extends React.Component {
   render(){
     return(
       <div>
-        {this.state.pageLoaded &&
+        {this.state.pageLoaded ?
         <div className="content">
           <div className="content-header-container">
 
@@ -147,7 +148,8 @@ class ContentDisplay extends React.Component {
             editorState={this.state.editorState}
             editContent={this.editContent}
             removeContent={this.removeContent}/>
-        </div>}
+        </div> :
+          <Loading/>}
       </div>
     )};
 }

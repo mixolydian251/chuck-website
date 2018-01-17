@@ -49,3 +49,10 @@ figure{
 .public-DraftStyleDefault-unorderedListItem{
     margin: 2rem 0 !important;
 }
+
+@media screen and (max-width: 485px) {
+    .editor {
+        width: 95vw;
+        padding: 2rem 2rem 8rem;
+    }
+}

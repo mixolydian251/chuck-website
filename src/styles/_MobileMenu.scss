@@ -67,6 +67,7 @@
     position: absolute;
     height: 100vh;
     width: 50vw;
+    padding-top: 3rem;
     top: 0;
     right: 0;
     background-image: linear-gradient(to bottom right, #575d5f, #282b2d);
@@ -152,6 +153,15 @@
       width: 101%;
       height: 30vh;
     }
+
+    &--user {
+      z-index: 45;
+      bottom: 0;
+      left: -100%;
+      width: 101%;
+      height: 30vh;
+    }
+
     &--drop-down {
       z-index: 45;
       font-weight: 100;
@@ -191,13 +201,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-evenly;
   }
 
   &__log-in {
-    text-align: center;
-    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
     min-width: 136px;
+    max-width: 200px;
     z-index: 60;
     background-color: #f8f8f8;
     color: #222222;
@@ -212,18 +225,26 @@
       box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
     }
   }
-}
 
-//@keyframes mobileMenuWoosh {
-//  0% {
-//    opacity: 0;
-//    transform: translateX(20rem);
-//  }
-//  100%{
-//    opacity: 1;
-//    transform: translateX(0);
-//  }
-//}
+  &__user{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: -2rem ;
+
+    &--image{
+      width: 75px;
+      border-radius: 50%;
+    }
+
+    &--name{
+      font-size: 1.8rem;
+    }
+  }
+}
 
 @keyframes mobileMenuWoosh {
   0% {
@@ -238,5 +259,16 @@
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+
+@media screen and (min-width: 500px) {
+  .mobilemenu{
+    &__user{
+      &--image{
+        width: 100px
+      }
+    }
   }
 }

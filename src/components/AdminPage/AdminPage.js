@@ -1,5 +1,5 @@
 import React from 'react';
-import ContentCreateForm from "../utilities/ContentCreateForm";
+import ContentCreateForm from "./ContentCreateForm";
 
 class AdminPage extends React.Component{
 

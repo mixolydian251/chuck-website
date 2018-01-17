@@ -14,7 +14,7 @@ import EssaysPage from "../components/EssaysPage";
 import NotFoundPage from '../components/NotFoundPage';
 
 
-import Menu from '../components/Menu';
+import Menu from '../components/Menus/Menu';
 import Footer from '../components/Footer';
 
 import AdminRoute from './AdminRoute';

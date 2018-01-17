@@ -28,7 +28,7 @@ export default () => (
     </div>
 
     <div>
-      <p className="button button-green"> Let's Upgrade </p>
+      <p className="content__btn content__btn--blue"> Let's Upgrade </p>
     </div>
   </div>
 );

@@ -1,13 +1,13 @@
 .card{
   display: flex;
   flex-direction: column;
-
+  transition: transform 150ms, box-shadow 150ms;
   height: 100%;
   width: 100%;
   padding: 2rem;
   background-color: white;
   color: #282828;
-  box-shadow: 0 1rem 1rem 0.5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
   &__title{
     overflow-wrap: break-word;
     font-size: 2.5rem;
@@ -34,4 +34,8 @@
     font-style: italic;
   }
 
+  &:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 1.5rem 1.5rem rgba(0, 0, 0, 0.2);
+  }
 }

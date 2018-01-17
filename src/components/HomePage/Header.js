@@ -14,7 +14,7 @@ class Header extends React.Component {
     if (window.innerWidth > 768) {
 
       menu.style.color = `#ffffff`;
-      menuBackground.style.backgroundColor = 'transparent';
+      menuBackground.style.background = 'transparent';
       logo.style.filter = 'invert(0%)';
       arrowPlays.style.filter = 'invert(100%)';
       arrowProse.style.filter = 'invert(100%)';
@@ -29,21 +29,23 @@ class Header extends React.Component {
     }
   }
   componentWillUnmount() {
-    const menu = document.getElementById('menu');
-    const menuBackground = document.getElementById('menu-container');
-    const logo = document.getElementById('logo');
-    const arrowPlays = document.getElementsByClassName('menu__nav--arrow')[0];
-    const arrowProse = document.getElementsByClassName('menu__nav--arrow')[1];
-    const arrowEvents = document.getElementsByClassName('menu__nav--arrow')[2];
+    if (window.innerWidth > 768) {
+      const menu = document.getElementById('menu');
+      const menuBackground = document.getElementById('menu-container');
+      const logo = document.getElementById('logo');
+      const arrowPlays = document.getElementsByClassName('menu__nav--arrow')[0];
+      const arrowProse = document.getElementsByClassName('menu__nav--arrow')[1];
+      const arrowEvents = document.getElementsByClassName('menu__nav--arrow')[2];
 
-    window.removeEventListener('scroll', menuColor);
+      window.removeEventListener('scroll', menuColor);
 
-    menu.style.color = `#222222`;
-    menuBackground.style.backgroundColor = '#fafafa';
-    logo.style.filter = 'invert(100%)';
-    arrowPlays.style.filter = 'invert(0%)';
-    arrowProse.style.filter = 'invert(0%)';
-    arrowEvents.style.filter = 'invert(0%)';
+      menu.style.color = `#222222`;
+      menuBackground.style.background = 'linear-gradient(to top left , #F2F2F2,#DBDBDB,#EAEAEA)';
+      logo.style.filter = 'invert(100%)';
+      arrowPlays.style.filter = 'invert(0%)';
+      arrowProse.style.filter = 'invert(0%)';
+      arrowEvents.style.filter = 'invert(0%)';
+    }
   }
   render() {
     return (
@@ -86,7 +88,7 @@ function menuColor () {
 
   if (window.scrollY < window.innerHeight - 210) {
     menu.style.color = `#ffffff`;
-    menuBackground.style.backgroundColor = 'transparent';
+    menuBackground.style.background = 'transparent';
     logo.style.filter = 'invert(0%)';
     arrowPlays.style.filter = 'invert(100%)';
     arrowProse.style.filter = 'invert(100%)';
@@ -99,7 +101,7 @@ function menuColor () {
 
   } else {
     menu.style.color = `#222222`;
-    menuBackground.style.backgroundColor = '#fafafa';
+    menuBackground.style.background = 'linear-gradient(to top left , #F2F2F2,#DBDBDB,#EAEAEA)';
     logo.style.filter = 'invert(100%)';
     arrowPlays.style.filter = 'invert(0%)';
     arrowProse.style.filter = 'invert(0%)';

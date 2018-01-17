@@ -28,7 +28,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<Loading />, document.getElementById('app'));
+ReactDOM.render(<Loading/>, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
