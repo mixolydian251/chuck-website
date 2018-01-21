@@ -33,7 +33,7 @@ class ContentDisplay extends React.Component {
           editorState: this.props.content.editorState,
           pageLoaded: true,
         })
-      })
+      });
   }
 
   determineCategory = (subcategory) => {
@@ -129,7 +129,7 @@ class ContentDisplay extends React.Component {
               </div>
             }
 
-            {this.state.admin &&
+            {this.state.admin && this.state.subcategory !== 'event'  &&
             <select className="display-content__form--category"
                     value={this.state.subcategory}
                     onChange={this.handleCategoryChange}>
@@ -143,11 +143,30 @@ class ContentDisplay extends React.Component {
             </select>}
           </div>
 
+          {this.state.editorState ?
           <TextEditor
             contentId={this.state.id}
             editorState={this.state.editorState}
             editContent={this.editContent}
-            removeContent={this.removeContent}/>
+            removeContent={this.removeContent}/> :
+
+            <div>
+              {this.state.admin &&
+              <div className="content__btn-container">
+                <button
+                className="content__btn content__btn--save"
+                onClick={this.editContent}>
+                Save Event
+                </button>
+                <button
+                className="content__btn content__btn--remove"
+                onClick={this.removeContent}>
+                Remove Event
+                </button>
+              </div>}
+            </div>
+          }
+
         </div> :
           <Loading/>}
       </div>

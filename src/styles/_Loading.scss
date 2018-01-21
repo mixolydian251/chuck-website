@@ -3,6 +3,7 @@
 .loading{
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -12,9 +13,8 @@
     animation: text 1.4s infinite ease-in-out;
     font-size: 3rem;
     z-index: 50;
-    position: absolute;
-    top: 63%;
     color: #222222
+
   }
 }
 
@@ -28,7 +28,7 @@
   font-weight: bolder;
   color: #f8f8f8;
   box-shadow: 1.2rem 0.7rem 1.3rem rgba(0, 0, 0, 0.2);
-  animation: rotate 2.5s infinite ease-in-out, background 2.5s infinite ease-in-out alternate;
+  animation: rotate 2.5s infinite ease-in-out, backgroundDesktop 2.5s infinite ease-in-out alternate;
 }
 
 
@@ -46,7 +46,7 @@
   align-items: center;
   position: absolute;
   border-radius: 0 14px 5px 10px;
-  border-left: solid 17px #555555;
+  border-left: solid 17px #444444;
   border-top: solid 9px #fcfcfc;
   padding: 3rem 1rem;
   opacity: 0.98;
@@ -127,23 +127,7 @@
 
 
 
-//@keyframes rotate {
-//  0% {
-//    transform: perspective(200px) rotateX(0deg) rotateY(0deg);
-//  }
-//  25%{
-//    transform: perspective(200px) rotateX(-180deg) rotateY(0deg);
-//  }
-//  50% {
-//    transform: perspective(200px) rotateX(-180deg) rotateY(-180deg);
-//  }
-//  75%{
-//    transform: perspective(200px) rotateX(0deg) rotateY(-180deg);
-//  }
-//  100% {
-//    transform: perspective(200px) rotateX(0deg) rotateY(0deg);
-//  }
-//}
+
 
 @keyframes rotate {
   0% {
@@ -163,12 +147,7 @@
   }
 }
 
-
-
-
-
-
-@keyframes background {
+@keyframes backgroundDesktop {
   0% {
     background: linear-gradient(to bottom right, $light_green, $dark_green);
     border-left: solid 17px $dark_green;
@@ -190,6 +169,28 @@
     border-left: solid 17px $dark_green;
   }
 }
+@keyframes backgroundMobile {
+  0% {
+    background: linear-gradient(to bottom right, $light_green, $dark_green);
+
+  }
+  25%{
+    background: linear-gradient(to bottom right, $light_blue, #2d7da8);
+
+  }
+  50% {
+    background: linear-gradient(to bottom right, #ff3a13, #bf131c);
+
+  }
+  75%{
+    background: linear-gradient(to bottom right, $yellow, $orange);
+
+  }
+  100% {
+    background: linear-gradient(to bottom right, $light_green, $dark_green);
+
+  }
+}
 
 @keyframes text {
   0% {
@@ -203,5 +204,18 @@
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+
+@media screen and (max-width: 485px) {
+  .spinner{
+    animation: rotate 2.5s infinite ease-in-out, backgroundMobile 2.5s infinite ease-in-out alternate;
+  }
+
+  .book__author{
+    &-events{
+      left: -28px;
+    }
   }
 }

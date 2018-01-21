@@ -1,13 +1,16 @@
 .card{
   display: flex;
   flex-direction: column;
-  transition: transform 150ms, box-shadow 150ms;
+  transition: all 100ms;
   height: 100%;
   width: 100%;
   padding: 2rem;
+  border-radius: 5px;
   background-color: white;
-  color: #282828;
+  color: #333333;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+  align-self: start;
+
   &__title{
     overflow-wrap: break-word;
     font-size: 2.5rem;
@@ -19,6 +22,7 @@
     padding: 1rem 0;
     width: 100%;
     height: auto;
+    box-sizing: content-box;
   }
 
   &__description{
@@ -34,7 +38,7 @@
     font-style: italic;
   }
 
-  &:hover{
+  &:hover {
     transform: translateY(-8px);
     box-shadow: 0 1.5rem 1.5rem rgba(0, 0, 0, 0.2);
   }

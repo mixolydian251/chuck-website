@@ -18,7 +18,6 @@ export const startCreateContent = (contentData) => {
       title: '',
       description: '',
       date: Number(moment().format('x')),
-      image: '',
       url: '',
       editorState: '{"entityMap":{},"blocks":[{"key":"dg53k","text":"Create a masterpiece!","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}]}',
       ...contentData

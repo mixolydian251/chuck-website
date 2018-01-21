@@ -1,13 +1,19 @@
-import { firebase, googleAuthProvider } from '../firebase/firebase';
+import { firebase, googleAuthProvider, facebookAuthProvider } from '../firebase/firebase';
 
 export const login = uid => ({
   type: 'LOGIN',
   uid
 });
 
-export const startLogin = () => {
+export const startLoginGoogle = () => {
   return dispatch => {
     return firebase.auth().signInWithRedirect(googleAuthProvider);
+  };
+};
+
+export const startLoginFacebook = () => {
+  return dispatch => {
+    return firebase.auth().signInWithRedirect(facebookAuthProvider);
   };
 };
 
@@ -17,6 +23,9 @@ export const logout = () => ({
 
 export const startLogout = () => {
   return dispatch => {
-    return firebase.auth().signOut();
+    return firebase.auth().signOut()
+      .then(() => {
+        window.location = "http://localhost:8080";
+      });
   };
 };

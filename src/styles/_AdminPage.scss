@@ -42,12 +42,14 @@
 
     &--title{
       margin: 2rem;
+      padding-left: 1rem;
       height: 50px;
       width: 60vw;
     }
 
     &--description{
       margin: 2rem;
+      padding: 1rem;
       height: 200px;
       width: 60%;
       overflow: scroll;

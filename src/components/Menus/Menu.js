@@ -15,6 +15,7 @@ class Menu extends React.Component{
     ) {
       //mobile
     } else {
+      
       if (window.innerWidth > 768) {
         this.setState({ mobile: false });
       }

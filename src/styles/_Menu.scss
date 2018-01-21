@@ -171,16 +171,16 @@
       transform: rotate(270deg) skewX(20deg);
       bottom: 25%;
       &-plays{
-        left: -30px;
+        left: -29px;
       }
       &-prose{
-        left: -32px;
+        left: -30px;
       }
       &-events{
-        left: -37px;
+        left: -34px;
       }
       &-settings{
-        left: -41px;
+        left: -38px;
       }
 
     }
@@ -232,8 +232,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    position: absolute;
-    right: 0;
+    margin-left: auto;
+    margin-right: -10px;
   }
 
   &__log-in {

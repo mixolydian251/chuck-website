@@ -18,7 +18,9 @@ class MobileMenu extends React.Component {
     return (
       <menu id="mobilemenu-container" className="mobilemenu-container">
         <div id="mobilemenu" className="mobilemenu">
-          <img src={logo} id="logo" className="mobilemenu__logo" />
+          <Link to="/">
+            <img src={logo} id="logo" className="mobilemenu__logo" />
+          </Link>
 
           <div className="mobilemenu__title">Charles Keith</div>
 
@@ -36,8 +38,3 @@ class MobileMenu extends React.Component {
 }
 
 export default MobileMenu;
-
-// <div className="mobilemenu__log-in-container">
-//   <p className="mobilemenu__log-in">Sign In</p>
-// <p className="mobilemenu__log-in">Create Account</p>
-// </div>

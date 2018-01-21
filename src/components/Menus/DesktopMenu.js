@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { startLogin, startLogout } from '../../actions/authentication';
+import { startLoginGoogle, startLoginFacebook, startLogout } from '../../actions/authentication';
 import { firebase } from '../../firebase/firebase';
 import { history } from "../../routers/AppRouter"
+import LoginModal from './LoginModal';
 const logo = require('../../images/chuck_logo_white.svg');
 const dropArrow = require('../../images/drop_down_arrow.svg');
+
 
 class DesktopMenu extends React.Component {
   state = {
     plays: false,
     prose: false,
     events: false,
-    user: false
+    user: false,
+    loginModal: false,
   };
   handleWorksHover = () => {
     this.setState(prevState => ({ plays: !prevState.plays }));
@@ -45,6 +48,10 @@ class DesktopMenu extends React.Component {
     history.push("/")
   };
 
+  handleLoginModal = () => {
+    this.setState((prevState) => ({ loginModal: !prevState.loginModal }));
+  };
+
   render() {
     return (
       <menu id="menu-container" className="menu-container">
@@ -55,11 +62,12 @@ class DesktopMenu extends React.Component {
           </Link>
 
           <div className="menu__nav-container">
-            <div className="menu__nav">
+            <Link to="/about" className="menu__nav">
               About
-            </div>
+            </Link>
 
-            <button
+            <Link
+              to="/plays"
               onClick={this.handleMenuReset}
               onMouseEnter={this.handleWorksHover}
               onMouseLeave={this.handleWorksHover}
@@ -95,9 +103,10 @@ class DesktopMenu extends React.Component {
                   </div>
                 )}
               </div>
-            </button>
+            </Link>
 
-            <button
+            <Link
+              to="/prose"
               onClick={this.handleMenuReset}
               onMouseEnter={this.handleReviewsHover}
               onMouseLeave={this.handleReviewsHover}
@@ -127,13 +136,14 @@ class DesktopMenu extends React.Component {
                   </div>
                 )}
               </Link>
-            </button>
+            </Link>
 
             <Link to="/essays"  className="menu__nav">
               Essays
             </Link>
 
-            <button
+            <Link
+              to="/events"
               onClick={this.handleMenuReset}
               onMouseEnter={this.handleEventsHover}
               onMouseLeave={this.handleEventsHover}
@@ -158,7 +168,7 @@ class DesktopMenu extends React.Component {
                   </div>
                 )}
               </Link>
-            </button>
+            </Link>
 
             <Link to="/links" className="menu__nav">
               Links
@@ -200,20 +210,28 @@ class DesktopMenu extends React.Component {
             </button>
           ) : (
             <div className="menu__log-in-container">
-              <button onClick={this.props.startLogin} className="content__btn content__btn--save menu__log-in">
+              <button onClick={this.handleLoginModal} className="content__btn content__btn--save menu__log-in">
                 Sign In
               </button>
-              <button className="content__btn content__btn--blue menu__log-in">Create Account</button>
+              <button className="content__btn content__btn--blue menu__log-in"
+                      onClick={this.handleLoginModal}>
+                Create Account
+              </button>
             </div>
           )}
         </div>
+        {this.state.loginModal &&
+        <LoginModal startLoginGoogle={this.props.startLoginGoogle}
+                    startLoginFacebook={this.props.startLoginFacebook}
+                    handleLoginModal={this.handleLoginModal}/>}
       </menu>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  startLogin: () => dispatch(startLogin()),
+  startLoginGoogle: () => dispatch(startLoginGoogle()),
+  startLoginFacebook: () => dispatch(startLoginFacebook()),
   startLogout: () => dispatch(startLogout())
 });
 

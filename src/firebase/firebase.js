@@ -15,6 +15,9 @@ const database = firebase.database();
 const emailAuthProvider = new firebase.auth.EmailAuthProvider();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
+const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
+facebookAuthProvider.addScope('public_profile');
+
 const storage = firebase.storage();
 
-export { firebase, googleAuthProvider, storage, database as default };
+export { firebase, googleAuthProvider, facebookAuthProvider, storage, database as default };

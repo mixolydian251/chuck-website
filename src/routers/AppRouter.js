@@ -8,7 +8,7 @@ import ContentDisplay from "../components/ContentDisplay";
 import CreateAccountPage from '../components/CreateAccountPage';
 import PlaysPage from '../components/PlaysPage/PlaysPage';
 import ProsePage from '../components/ProsePage/ProsePage';
-import EventsPage from '../components/EventsPage';
+import EventsPage from '../components/EventsPage/EventsPage';
 import LinksPage from "../components/LinksPage";
 import EssaysPage from "../components/EssaysPage";
 import NotFoundPage from '../components/NotFoundPage';
