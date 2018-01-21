@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { admins } from '../firebase/firebase';
 import { Route, Redirect } from 'react-router-dom';
 
 export const AdminRoute = ({
@@ -11,7 +12,7 @@ export const AdminRoute = ({
     <Route
       {...rest}
       component={props =>
-        authId === 'V7kpYQ7RBWVx3HQS6iIUMW6Xjpy2' ? (
+        admins.includes(authId) ? (
           <div>
             <Component {...props} />
           </div>

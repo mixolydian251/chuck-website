@@ -1,10 +1,12 @@
 import React from 'react';
 import ContentCreateForm from "./ContentCreateForm";
 import EventCreateForm from './EventCreateForm';
+import SavedBanner from '../utilities/SavedBanner';
 
 class AdminPage extends React.Component{
   state = {
     contentPage: true,
+    contentSaved: false,
   };
 
   changeToContent = () => {
@@ -15,6 +17,15 @@ class AdminPage extends React.Component{
     this.setState({ contentPage: false })
   };
 
+  handleContentSave = () => {
+    this.setState(() => ({ contentSaved: true }));
+
+    setTimeout(() => {
+      this.setState(() => ({ contentSaved: false }));
+    },2500)
+
+  };
+
   render(){
     return(
     <div className="admin">
@@ -23,7 +34,7 @@ class AdminPage extends React.Component{
                 onClick={this.changeToContent}>
           Create Content
         </button>
-        <button className="content__btn content__btn--save"
+        <button className="content__btn content__btn--blue"
                 onClick={this.changeToEvent}>
           Create Event
         </button>
@@ -32,13 +43,18 @@ class AdminPage extends React.Component{
       {this.state.contentPage  ?
         <div>
           <h1>Create Content</h1><br/>
-          <ContentCreateForm/>
+          <ContentCreateForm
+            handleContentSave={this.handleContentSave}/>
         </div> :
         <div>
           <h1>Create an Event</h1><br/>
-          <EventCreateForm/>
+          <EventCreateForm
+            handleContentSave={this.handleContentSave}/>
         </div>
       }
+
+      {this.state.contentSaved &&
+      <SavedBanner/>}
     </div>
     )
   }

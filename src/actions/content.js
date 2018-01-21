@@ -1,4 +1,4 @@
-import uuid from 'uuid';
+import { admins } from "../firebase/firebase";
 import database, { storage } from '../firebase/firebase';
 import moment from 'moment';
 
@@ -23,7 +23,7 @@ export const startCreateContent = (contentData) => {
       ...contentData
     };
 
-    if (uid === 'V7kpYQ7RBWVx3HQS6iIUMW6Xjpy2'){
+    if ( admins.includes(uid) ){
       database
         .ref(`content`)
         .push(content)

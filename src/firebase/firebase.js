@@ -20,4 +20,6 @@ facebookAuthProvider.addScope('public_profile');
 
 const storage = firebase.storage();
 
-export { firebase, googleAuthProvider, facebookAuthProvider, storage, database as default };
+const admins = ['V7kpYQ7RBWVx3HQS6iIUMW6Xjpy2', 'A0sLvYq1UVgus9jthhuenGBY1H73'];
+
+export { firebase, googleAuthProvider, facebookAuthProvider, storage, admins, database as default };

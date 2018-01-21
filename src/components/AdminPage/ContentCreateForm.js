@@ -104,6 +104,7 @@ class ContentCreateForm extends React.Component{
        this.state.subcategory &&
        this.state.title ) {
       this.props.startCreateContent(stateObj);
+      this.props.handleContentSave();
     }
   };
 

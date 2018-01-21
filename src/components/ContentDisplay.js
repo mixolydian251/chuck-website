@@ -1,12 +1,14 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
-import TextEditor from './utilities/TextEditor';
+import { admins } from "../firebase/firebase";
 import {startEditContent, startRemoveContent, startSetContentById} from "../actions/content";
+import TextEditor from './utilities/TextEditor';
 import Loading from './Loading';
 import SavedBanner from './utilities/SavedBanner';
 import RemovedBanner from './utilities/RemovedBanner';
 
-import moment from 'moment';
+
 
 class ContentDisplay extends React.Component {
   state = {
@@ -20,7 +22,8 @@ class ContentDisplay extends React.Component {
     pageLoaded: false,
     saveBanner: false,
     removeBanner: false,
-    admin: this.props.authId === 'V7kpYQ7RBWVx3HQS6iIUMW6Xjpy2',
+    admin: admins.includes(this.props.authId)
+    ,
   };
 
   componentDidMount(){

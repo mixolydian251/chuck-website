@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {admins} from "../../firebase/firebase";
 import {startEditContent} from "../../actions/content";
 import { convertToRaw, convertFromRaw, EditorState, RichUtils } from 'draft-js';
 import { Map } from 'immutable';
@@ -22,6 +23,7 @@ import 'draft-js-image-plugin/lib/plugin.css';
 import 'draft-js-anchor-plugin/lib/plugin.css';
 import 'draft-js-focus-plugin/lib/plugin.css';
 import 'draft-js-alignment-plugin/lib/plugin.css'
+
 
 const focusPlugin = createFocusPlugin();
 const resizeablePlugin = createResizeablePlugin();
@@ -97,7 +99,7 @@ class CustomToolbarEditor extends Component {
 
   state = {
     editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(this.props.editorState))),
-    readOnly: this.props.authId !== 'V7kpYQ7RBWVx3HQS6iIUMW6Xjpy2',
+    readOnly: !admins.includes(this.props.authId),
     contentRemoved: false,
   };
 
