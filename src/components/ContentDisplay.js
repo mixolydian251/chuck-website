@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import TextEditor from './utilities/TextEditor';
 import {startEditContent, startRemoveContent, startSetContentById} from "../actions/content";
 import Loading from './Loading';
+import SavedBanner from './utilities/SavedBanner';
+import RemovedBanner from './utilities/RemovedBanner';
+
 import moment from 'moment';
 
 class ContentDisplay extends React.Component {
@@ -15,6 +18,8 @@ class ContentDisplay extends React.Component {
     description: undefined,
     editorState: null,
     pageLoaded: false,
+    saveBanner: false,
+    removeBanner: false,
     admin: this.props.authId === 'V7kpYQ7RBWVx3HQS6iIUMW6Xjpy2',
   };
 
@@ -88,17 +93,24 @@ class ContentDisplay extends React.Component {
       date: this.state.date,
       description: this.state.description,
     });
+
+    this.setState(() => ({ saveBanner: true }));
+
+    setTimeout(() => {
+      this.setState(() => ({ saveBanner: false }));
+    },2000)
   };
 
   removeContent = () => {
     this.props.startRemoveContent({ id: this.state.id });
-    history.push('/')
+
+    this.setState(() => ({ removeBanner: true }));
   };
 
   render(){
     return(
       <div>
-        {this.state.pageLoaded ?
+        {this.state.pageLoaded && !this.state.removeBanner ?
         <div className="content">
           <div className="content-header-container">
 
@@ -169,6 +181,12 @@ class ContentDisplay extends React.Component {
 
         </div> :
           <Loading/>}
+
+        {this.state.removeBanner &&
+        <RemovedBanner/>}
+
+        {this.state.saveBanner &&
+        <SavedBanner/>}
       </div>
     )};
 }
