@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 
 class Header extends React.Component {
+
   componentDidMount() {
     const menu = document.getElementById('menu');
     const menuBackground = document.getElementById('menu-container');
@@ -25,7 +26,7 @@ class Header extends React.Component {
       //   arrowUser.style.filter = 'invert(100%)';
       // }
 
-      window.addEventListener('scroll', menuColor)
+      window.addEventListener('scroll', menuColor);
     }
   }
   componentWillUnmount() {

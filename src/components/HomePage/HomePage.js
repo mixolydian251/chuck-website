@@ -12,17 +12,22 @@ class HomePage extends React.Component{
 
   componentDidMount(){
     window.scrollTo(0,0);
-    this.setState({ pageLoaded: true });
   }
+
+  handlePageLoad = () => {
+    this.setState({ pageLoaded: true })
+  };
+
   render(){
     return(
       <div>
         {!this.state.pageLoaded &&
-        <Loading/>}
-          <div className="body">
+        <Loading/>
+        }
+          <div className="body" >
             <Header/>
             <Quote/>
-            <About/>
+            <About handlePageLoad={this.handlePageLoad}/>
             <PremiumPitch/>
           </div>
       </div>

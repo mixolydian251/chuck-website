@@ -19,7 +19,7 @@
   border: solid 2px white;
   box-shadow: 0 1rem 1.5rem 0.9rem rgba(0,0,0,0.3);
   background-color: #555555;
-  opacity: 0.98;
+  opacity: 1 !important;
 
   font-size: 2rem;
   color: white;
@@ -34,19 +34,21 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border-radius: 5px;
-    border: solid 1px white;
+    border-radius: 5px !important;
+    border: solid 1px white !important;
     padding: 0 1rem;
     transition: all 100ms;
 
     &--facebook{
-      background-color: #3B5998;
+      opacity: 1 !important;
+      background-color: #3B5998 !important;
       color: white;
       font-size: 1.6rem;
     }
 
     &--google{
-      background-color: #333;
+      opacity: 1 !important;
+      background-color: #333 !important;
       color: #ffffff;
       font-size: 1.6rem;
     }
@@ -56,7 +58,7 @@
       box-shadow: 0 1rem 1rem rgba(0,0,0,0.2);
 
       img{
-        animation: spin 500ms ease;
+        animation: spinCCW 500ms ease;
         backface-visibility: hidden;
         transform: rotate(360deg);
       }
@@ -78,6 +80,31 @@
 }
 
 
+@media screen and (max-width: 500px) {
+  .login-modal{
+    &__button{
+      &--facebook{
+        img{
+          animation: spinCCW 800ms ease;
+          transform: rotate(360deg);
+        }
+      }
+      &--google{
+        img{
+          animation: spinCW 1000ms ease;
+          transform: rotate(360deg);
+        }
+      }
+      &:hover{
+        img{
+          animation: none;
+        }
+      }
+    }
+  }
+}
+
+
 @keyframes modal {
 
   0%{
@@ -92,10 +119,23 @@
 
 }
 
-@keyframes spin {
+@keyframes spinCCW {
 
   0%{
     transform: rotate(360deg);
+  }
+
+  100%{
+    opacity: 1;
+    transform: rotate(0);
+  }
+
+}
+
+@keyframes spinCW {
+
+  0%{
+    transform: rotate(-360deg);
   }
 
   100%{

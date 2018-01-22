@@ -9,7 +9,7 @@ const bookStack = require('../../images/book_stack.jpg');
 const openQuote = require('../../images/open_quotation.png');
 const closeQuote = require('../../images/close_quotation.png');
 
-export const About = () => (
+export const About = (props) => (
   <div className="about">
     <div className="about-container about-container--1">
       <div className="about__content">
@@ -39,7 +39,7 @@ export const About = () => (
       </div>
 
       <div className="about__image">
-        <img src={bookStack} />
+        <img onLoad={props.handlePageLoad} src={bookStack} />
       </div>
     </div>
 

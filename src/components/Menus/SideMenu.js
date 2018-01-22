@@ -158,10 +158,10 @@ class SideMenu extends React.Component {
         ) : (
 
           <div className="mobilemenu__log-in-container">
-            <button onClick={this.props.startLogin} className="content__btn content__btn--save mobilemenu__log-in">
+            <button onClick={this.props.handleLoginModal} className="content__btn content__btn--save mobilemenu__log-in">
               Sign In
             </button>
-            <button className="content__btn content__btn--blue mobilemenu__log-in">
+            <button onClick={this.props.handleLoginModal} className="content__btn content__btn--blue mobilemenu__log-in">
               Create Account
             </button>
           </div>
@@ -176,6 +176,7 @@ class SideMenu extends React.Component {
           {' '}
           x{' '}
         </button>
+
       </div>
     );
   }

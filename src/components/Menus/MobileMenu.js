@@ -2,16 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import SideMenu from './SideMenu';
+import LoginModal from "./LoginModal";
 
 const logo = require('../../images/chuck_logo_white.svg');
 const menu = require('../../images/menu.svg');
 
 class MobileMenu extends React.Component {
   state = {
-    sideMenu: false
+    sideMenu: false,
+    loginModal: false,
   };
   handleSideMenuTouch = () => {
     this.setState(prevState => ({ sideMenu: !prevState.sideMenu }));
+  };
+
+  handleLoginModal = () => {
+    this.setState((prevState) => ({ loginModal: !prevState.loginModal, sideMenu: false }));
   };
 
   render() {
@@ -29,8 +35,16 @@ class MobileMenu extends React.Component {
           </button>
 
           {this.state.sideMenu && (
-            <SideMenu handleSideMenuTouch={this.handleSideMenuTouch} />
+            <SideMenu
+              handleSideMenuTouch={this.handleSideMenuTouch}
+              handleLoginModal={this.handleLoginModal}
+            />
           )}
+
+
+          {this.state.loginModal &&
+            <LoginModal handleLoginModal={this.handleLoginModal}/>}
+
         </div>
       </menu>
     );
