@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {startLogin, startLogout} from "../../actions/authentication"
+import { startLogout } from "../../actions/authentication"
 import { firebase } from '../../firebase/firebase';
 
 const sideArrow = require('../../images/side_menu_arrow.svg');
@@ -183,7 +183,6 @@ class SideMenu extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  startLogin: () => dispatch(startLogin()),
   startLogout: () => dispatch(startLogout())
 });
 

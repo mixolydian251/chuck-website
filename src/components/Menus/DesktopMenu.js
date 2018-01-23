@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { startLoginGoogle, startLoginFacebook, startLogout } from '../../actions/authentication';
+import { startLogout } from '../../actions/authentication';
 import { firebase } from '../../firebase/firebase';
 import { history } from "../../routers/AppRouter"
 import LoginModal from './LoginModal';
+import AboutModal from '../AboutModal';
 const logo = require('../../images/chuck_logo_white.svg');
 const dropArrow = require('../../images/drop_down_arrow.svg');
 
@@ -16,6 +17,7 @@ class DesktopMenu extends React.Component {
     events: false,
     user: false,
     loginModal: false,
+    aboutModal: false,
   };
   handleWorksHover = () => {
     this.setState(prevState => ({ plays: !prevState.plays }));
@@ -52,6 +54,10 @@ class DesktopMenu extends React.Component {
     this.setState((prevState) => ({ loginModal: !prevState.loginModal }));
   };
 
+  handleAboutModal = () => {
+    this.setState((prevState) => ({ aboutModal: !prevState.aboutModal }));
+  };
+
   render() {
     return (
       <menu id="menu-container" className="menu-container">
@@ -62,9 +68,10 @@ class DesktopMenu extends React.Component {
           </Link>
 
           <div className="menu__nav-container">
-            <Link to="/about" className="menu__nav">
+            <button className="menu__nav"
+                    onClick={this.handleAboutModal}>
               About
-            </Link>
+            </button>
 
             <Link
               to="/plays"
@@ -221,17 +228,16 @@ class DesktopMenu extends React.Component {
           )}
         </div>
         {this.state.loginModal &&
-        <LoginModal startLoginGoogle={this.props.startLoginGoogle}
-                    startLoginFacebook={this.props.startLoginFacebook}
-                    handleLoginModal={this.handleLoginModal}/>}
+        <LoginModal handleLoginModal={this.handleLoginModal}/>}
+
+        {this.state.aboutModal &&
+        <AboutModal handleAboutModal={this.handleAboutModal}/>}
       </menu>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  startLoginGoogle: () => dispatch(startLoginGoogle()),
-  startLoginFacebook: () => dispatch(startLoginFacebook()),
   startLogout: () => dispatch(startLogout())
 });
 

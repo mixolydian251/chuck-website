@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { startLoginGoogle, startLoginFacebook } from '../../actions/authentication';
 const facebook = require('../../images/facebook.svg');
 const google = require('../../images/google.svg');
+
 
 const LoginModal = (props) => (
   <div className="login-modal">
@@ -25,4 +28,9 @@ const LoginModal = (props) => (
   </div>
 );
 
-export default LoginModal
+const mapDispatchToProps = dispatch => ({
+  startLoginGoogle: () => dispatch(startLoginGoogle()),
+  startLoginFacebook: () => dispatch(startLoginFacebook()),
+});
+
+export default connect(undefined, mapDispatchToProps)(LoginModal);

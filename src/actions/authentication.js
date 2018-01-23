@@ -25,7 +25,7 @@ export const startLogout = () => {
   return dispatch => {
     return firebase.auth().signOut()
       .then(() => {
-        window.location = "http://localhost:8080";
+        window.location.replace("http://thedapperdeveloper.com");
       });
   };
 };

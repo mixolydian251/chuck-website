@@ -41,7 +41,6 @@ class MobileMenu extends React.Component {
             />
           )}
 
-
           {this.state.loginModal &&
             <LoginModal handleLoginModal={this.handleLoginModal}/>}
 
