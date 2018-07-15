@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: Futura, Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   &__title {
     text-align: center;
@@ -25,7 +26,6 @@
     text-align: center;
     z-index: 11;
     color: white;
-    font-family: Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 3rem;
   }
 }

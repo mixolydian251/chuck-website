@@ -1,13 +1,11 @@
 import React from 'react';
-
 const writer = require('../../images/writting-file.svg');
 const playwright = require('../../images/stage.svg');
 const reviewer = require('../../images/review.svg');
-const leafBook = require('../../images/leaf_book.jpg');
-const bookStack = require('../../images/book_stack.jpg');
-
-const openQuote = require('../../images/open_quotation.png');
-const closeQuote = require('../../images/close_quotation.png');
+const leafBook = 'https://firebasestorage.googleapis.com/v0/b/charles-keith-production.appspot.com/o/site-images%2Fleaf_book.jpg?alt=media&token=a0830d10-c7fb-4cea-83f3-7d242eb2fcd3';
+const bookStack = 'https://firebasestorage.googleapis.com/v0/b/charles-keith-production.appspot.com/o/site-images%2Fbook_stack.jpg?alt=media&token=3677de31-31c2-4f69-914c-51413ad55e01';
+const openQuote = 'https://firebasestorage.googleapis.com/v0/b/charles-keith-production.appspot.com/o/site-images%2Fopen_quotation.png?alt=media&token=3174ccb9-490d-4b9b-bac7-270617543805';
+const closeQuote = 'https://firebasestorage.googleapis.com/v0/b/charles-keith-production.appspot.com/o/site-images%2Fclose_quotation.png?alt=media&token=dbf2f964-7b4d-4f7f-95c0-64a0686239a5';
 
 export const About = (props) => (
   <div className="about">

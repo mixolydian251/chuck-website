@@ -18,7 +18,7 @@
   border-radius: 5px;
   border: solid 2px white;
   box-shadow: 0 1rem 1.5rem 0.9rem rgba(0,0,0,0.3);
-  background-color: #555555;
+  background: linear-gradient( to bottom right, #555555, #333333);
   opacity: 1 !important;
 
   font-size: 2rem;
@@ -43,14 +43,14 @@
       opacity: 1 !important;
       background-color: #3B5998 !important;
       color: white;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
     }
 
     &--google{
       opacity: 1 !important;
       background-color: #333 !important;
       color: #ffffff;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
     }
 
     &:hover{

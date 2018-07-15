@@ -6,28 +6,17 @@ import PremiumPitch from './PremiumPitch';
 import Loading from '../Loading';
 
 class HomePage extends React.Component{
-  state = {
-    pageLoaded: false,
-  };
-
   componentDidMount(){
     window.scrollTo(0,0);
   }
 
-  handlePageLoad = () => {
-    this.setState({ pageLoaded: true })
-  };
-
   render(){
     return(
       <div>
-        {!this.state.pageLoaded &&
-        <Loading/>
-        }
           <div className="body" >
             <Header/>
             <Quote/>
-            <About handlePageLoad={this.handlePageLoad}/>
+            <About/>
             <PremiumPitch/>
           </div>
       </div>

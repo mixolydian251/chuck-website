@@ -43,7 +43,7 @@ const imagePlugin = createImagePlugin({decorator});
 
 
 const mockUpload = () => (
-  <div style={{fontSize: '1.6rem'}}>
+  <div style={{fontSize: '1.7rem'}}>
     Uploading....
   </div>
 );

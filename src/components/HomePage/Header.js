@@ -52,7 +52,7 @@ class Header extends React.Component {
     return (
       <header id="background-1" className="header">
         <h1 className="header__title">Charles Keith</h1>
-        <h1 className="header__subtitle">Writer. Playwright. Reviews</h1>
+        <h1 className="header__subtitle">Writer</h1>
       </header>
     );
   }
@@ -63,12 +63,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(Header);
-
-
-
-
-
-
 
 
 function menuColor () {

@@ -25,7 +25,7 @@ export const startLogout = () => {
   return dispatch => {
     return firebase.auth().signOut()
       .then(() => {
-        window.location.replace("http://thedapperdeveloper.com");
+        window.location.replace("http://charleskeithnc.com");
       });
   };
 };

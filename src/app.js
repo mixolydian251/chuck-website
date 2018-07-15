@@ -21,8 +21,10 @@ let hasRendered = false;
 
 const renderApp = () => {
   if (!hasRendered) {
-    ReactDOM.render(jsx, document.getElementById('app'));
-    hasRendered = true;
+    setTimeout(() => {
+      ReactDOM.render(jsx, document.getElementById('app'));
+      hasRendered = true;
+    },1)
   }
 };
 
